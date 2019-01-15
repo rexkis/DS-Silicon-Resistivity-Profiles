@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<VariablesViewState
+   version = "1.0">
+   <ContextStates>
+      <ContextState
+         contextName = "ViewController.viewDidLoad():ViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "resData">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "ViewController.calculate():ViewControllerExtensions.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "resData[5].res">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "GraphView.(minmax.getter).(closure #1):GraphView.swift">
+      </ContextState>
+      <ContextState
+         contextName = "Compensation.getCompensation() -&gt; [Double]:Ingot.swift">
+      </ContextState>
+      <ContextState
+         contextName = "GraphView.getYAxisData() -&gt; (major : (digits : [Int], values : [Double], labels : [String]), minor : (digits : [Int], values : [Double], labels : [String]), yAxisMinMax : [Double]):GraphView.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "minmax">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+   </ContextStates>
+</VariablesViewState>

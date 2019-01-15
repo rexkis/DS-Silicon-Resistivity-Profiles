@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+    <dependencies>
+        <deployment identifier="macosx"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14460.31"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <customObject id="-2" userLabel="File's Owner" customClass="GraphView" customModule="SiH_TT" customModuleProvider="target">
+            <connections>
+                <outlet property="calculatedLabel" destination="4SG-bH-BrR" id="8u1-pF-1bJ"/>
+                <outlet property="contentView" destination="Hz6-mo-xeY" id="8rm-Cv-9vE"/>
+                <outlet property="customLabel" destination="ufo-qB-Rf2" id="9GM-NF-gbt"/>
+                <outlet property="titleLabel" destination="uxe-dT-Iy6" id="o0W-a3-t4E"/>
+                <outlet property="xAxisLabel" destination="r3L-8X-2Hs" id="ydP-l8-IEW"/>
+                <outlet property="yAxisLabel" destination="A9D-IX-dsV" id="2qF-Wz-J0s"/>
+            </connections>
+        </customObject>
+        <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
+        <customObject id="-3" userLabel="Application" customClass="NSObject"/>
+        <customView id="Hz6-mo-xeY">
+            <rect key="frame" x="0.0" y="0.0" width="750" height="700"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+            <subviews>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="uxe-dT-Iy6">
+                    <rect key="frame" x="333" y="671" width="84" height="19"/>
+                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Chart Title" id="myt-P9-cVO">
+                        <font key="font" metaFont="systemSemibold" size="16"/>
+                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="ufo-qB-Rf2">
+                    <rect key="frame" x="337" y="654" width="77" height="17"/>
+                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Custom Title" id="cEF-JO-QRI">
+                        <font key="font" size="13" name="Helvetica-Light"/>
+                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="4SG-bH-BrR">
+                    <rect key="frame" x="328" y="637" width="95" height="17"/>
+                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Calculated Title" id="oTG-AJ-GVn">
+                        <font key="font" size="13" name="Helvetica-Light"/>
+                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="A9D-IX-dsV">
+                    <rect key="frame" x="18" y="272" width="77" height="17"/>
+                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Y Axis Label" id="NDi-86-Pnu">
+                        <font key="font" size="13" name="Helvetica-Light"/>
+                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="r3L-8X-2Hs">
+                    <rect key="frame" x="315" y="10" width="120" height="17"/>
+                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Solidified fraction, g" id="Hst-wV-4iP">
+                        <font key="font" size="13" name="Helvetica-Light"/>
+                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+            </subviews>
+            <constraints>
+                <constraint firstItem="ufo-qB-Rf2" firstAttribute="centerX" secondItem="uxe-dT-Iy6" secondAttribute="centerX" id="1dC-uu-0pn"/>
+                <constraint firstItem="A9D-IX-dsV" firstAttribute="centerY" secondItem="Hz6-mo-xeY" secondAttribute="centerY" constant="70" id="DZd-na-rfV"/>
+                <constraint firstItem="4SG-bH-BrR" firstAttribute="centerX" secondItem="ufo-qB-Rf2" secondAttribute="centerX" id="XZk-vr-X6o"/>
+                <constraint firstAttribute="bottom" secondItem="r3L-8X-2Hs" secondAttribute="bottom" constant="10" id="bPY-z4-xqk"/>
+                <constraint firstItem="A9D-IX-dsV" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" constant="20" id="ffD-p0-bvb"/>
+                <constraint firstItem="r3L-8X-2Hs" firstAttribute="centerX" secondItem="Hz6-mo-xeY" secondAttribute="centerX" id="hGD-6e-eeP"/>
+                <constraint firstItem="ufo-qB-Rf2" firstAttribute="top" secondItem="uxe-dT-Iy6" secondAttribute="bottom" id="nm4-pf-zVK"/>
+                <constraint firstItem="uxe-dT-Iy6" firstAttribute="top" secondItem="Hz6-mo-xeY" secondAttribute="top" constant="10" id="qQL-mL-Hlc"/>
+                <constraint firstItem="uxe-dT-Iy6" firstAttribute="centerX" secondItem="Hz6-mo-xeY" secondAttribute="centerX" id="vAC-bl-Xxw"/>
+                <constraint firstItem="4SG-bH-BrR" firstAttribute="top" secondItem="ufo-qB-Rf2" secondAttribute="bottom" id="xjb-PL-tyB"/>
+            </constraints>
+        </customView>
+    </objects>
+</document>
