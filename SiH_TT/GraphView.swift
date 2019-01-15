@@ -221,7 +221,6 @@ class GraphView: NSView {
     override func mouseDown(with event: NSEvent) {
         guard trackEnabled == true else {return}
         currentTrackPoint = getTrackPoint(point: event.locationInWindow)
-        
         getCurrentTouch()
         needsDisplay = true
     }
