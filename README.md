@@ -13,6 +13,7 @@ for each dopant in silicon feedstock for achieving desired custom values of ingo
 OR:
 2. You can set custom concentration for each dopant in silicon feedstock. Program calculates values of ingot resistivity 
 at two or three points along ingot height.
+
 In both cases in the chart window, you can visualize one of the above profiles (resistivity, compensation e.t.c).
 
 
