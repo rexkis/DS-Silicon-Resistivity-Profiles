@@ -14,7 +14,18 @@ OR:
 2. You can set custom concentration for each dopant in silicon feedstock. Program calculates values of ingot resistivity 
 at two or three points along ingot height.
 
-In both cases in the chart window, you can visualize one of the above profiles (resistivity, compensation e.t.c).
+In both cases in the chart window, you can visualize one of the above profiles (resistivity, compensation e.t.c) in chart area.
+
+Possible doping cases are:
+
+Silicon feedstock with Boron (B), Phosphorus (P), Arsenic (As) and Gallium (Ga) in combinations:
+
+- B + P
+- B + As
+- P + Ga
+- As + Ga
+- B + P + Ga
+- B + As + Ga
 
 
 
