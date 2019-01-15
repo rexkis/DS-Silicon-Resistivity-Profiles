@@ -4,7 +4,7 @@
 //
 //  Created by Igor Kutovoy on 03.05.17.
 //  Copyright © 2017 Igor Kutovoy. All rights reserved.
-//
+//  GIT created 15.01.2019
 
 import Cocoa
 
