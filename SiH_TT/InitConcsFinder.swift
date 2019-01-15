@@ -12,6 +12,9 @@ import Accelerate
 public typealias ConvFunction = (Double) -> Double
 typealias LAInt = __CLPK_integer
 
+// Used external variables:
+// 
+
 class InitConcsFinder {
     public var roots = [Double]()
     

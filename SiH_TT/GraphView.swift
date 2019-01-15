@@ -298,27 +298,3 @@ class GraphView: NSView {
         alert.beginSheetModal(for: window, completionHandler: nil)
     }
 }
-
-//class PopVC: NSViewController {
-//
-//    let popover = NSPopover()
-//    class func loadFromNib() -> PopVC {
-//        let vc = NSStoryboard(name: "Main", bundle: nil).instantiateController(withIdentifier: "PopVC") as! PopVC
-//        return vc
-//    }
-//
-//    @IBOutlet weak var label: NSTextField!
-//
-//    override func viewDidLoad() {
-//        super.viewDidLoad()
-//
-//        popover.behavior = .semitransient
-//        popover.animates = false
-//    }
-//    
-//    func showPopover(view:NSView, prefEdge: NSRectEdge) {
-//        popover.contentViewController = self
-//        popover.show(relativeTo: view.bounds, of: view, preferredEdge: prefEdge)
-//    }
-//}
-
