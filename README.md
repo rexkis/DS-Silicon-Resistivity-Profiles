@@ -11,7 +11,7 @@ There are two kinds of calculations in program.
 (for the case of silicon doping with two or three impurities). Program calculates required initial concentration 
 for each dopant in silicon feedstock for achieving desired custom values of ingot resistivity. 
 OR:
-2. You can set CUSTOM CONCENTRATION )F EACH DOPANT in silicon feedstock before growth. Program calculates values of 
+2. You can set CUSTOM CONCENTRATIONS FOR EACH DOPANT in silicon feedstock before growth. Program calculates values of 
 ingot resistivity at two or three points along ingot height.
 
 In both cases in the chart window, you can visualize one of the above profiles (resistivity, compensation e.t.c) in chart area. In a separate window, the numerical values for the resistivity of the ingot are presented, depending on the ingot solidified fraction.
