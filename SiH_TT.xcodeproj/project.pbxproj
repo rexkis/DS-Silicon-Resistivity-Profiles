@@ -91,7 +91,7 @@
 				CCB33B521EE5BE6600AD7F9F /* Axes.swift */,
 				CCB33B531EE5BE6600AD7F9F /* AxesExtensions.swift */,
 			);
-			name = GraphView;
+			path = GraphView;
 			sourceTree = "<group>";
 		};
 		CC83D77F1EBA1F1300527FCE = {
@@ -140,7 +140,7 @@
 				CC98EF531EBDC1900078869B /* ResultView.swift */,
 				CC98EF541EBDC1900078869B /* ResultView.xib */,
 			);
-			name = ResultView;
+			path = ResultView;
 			sourceTree = "<group>";
 		};
 		CC98EF5A1EC05C8E0078869B /* ViewController */ = {
@@ -150,7 +150,7 @@
 				CC98EF581EBDC3F40078869B /* ViewControllerExtensions.swift */,
 				CC0F2F4621AAE8A400E14022 /* VCNotifications.swift */,
 			);
-			name = ViewController;
+			path = ViewController;
 			sourceTree = "<group>";
 		};
 		CCAB1C7E1EBD075800D69AE6 /* Window */ = {
@@ -159,7 +159,7 @@
 				CCAB1C7A1EBA27C800D69AE6 /* WindowController.swift */,
 				CCAB1C7C1EBD05B100D69AE6 /* WindowExtensions.swift */,
 			);
-			name = Window;
+			path = Window;
 			sourceTree = "<group>";
 		};
 		CCAB1C851EBDA5D400D69AE6 /* InputView */ = {
@@ -169,7 +169,7 @@
 				CCAB1C801EBDA5C800D69AE6 /* InputView.xib */,
 				CCAB1C811EBDA5C800D69AE6 /* InputViewExtensions.swift */,
 			);
-			name = InputView;
+			path = InputView;
 			sourceTree = "<group>";
 		};
 		CCF2CA151EC0B404008294AC /* Solver */ = {
@@ -177,7 +177,7 @@
 			children = (
 				CCF2CA131EC0B3F3008294AC /* InitConcsFinder.swift */,
 			);
-			name = Solver;
+			path = Solver;
 			sourceTree = "<group>";
 		};
 		CCF2CA161EC0B40F008294AC /* Models */ = {
@@ -186,7 +186,7 @@
 				CCF2CA111EC0B040008294AC /* Feedstock.swift */,
 				CCF2CA191EC33DC1008294AC /* Ingot.swift */,
 			);
-			name = Models;
+			path = Models;
 			sourceTree = "<group>";
 		};
 		CCFBBA4521A57DB700BC6C53 /* ErrorCast */ = {
