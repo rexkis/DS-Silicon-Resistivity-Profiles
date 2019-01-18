@@ -8,8 +8,9 @@
 
 import Cocoa
 
-// Проверка введенного в UITextField значения: поле не должно быть пустым и может быть конвертировано в Double
+
 extension NSTextField {
+    // Check UITextField entered value: must be NO EMPTY, may be converted to Double
     var checkPassed:Bool {
         guard !self.stringValue.isEmpty , let toDouble = Double(self.stringValue) , toDouble > 0 else {
             return false }
@@ -17,10 +18,9 @@ extension NSTextField {
     }
 }
 
-// Разложение числа на степень и значение перед ней (>=1)
 extension Double {
+    // Decomposition of a number into a power and the value in front of it (value>=1)
     var decomp:(value:Double,digit:Int) {
-//        var value = Double(self)
         var value = self
         var digit:Int
         if value < 1 {
@@ -36,15 +36,15 @@ extension Double {
         
         return (value,digit)
     }
-}
-extension Double {
+    
+    // Formatting Number type
     struct Number {
         static var formatter = NumberFormatter()
     }
     var expStyle:String {
         Number.formatter.locale = Locale(identifier: "US")
         Number.formatter.numberStyle = .scientific
-//        Number.formatter.positiveFormat = "0.##E+0"
+        //        Number.formatter.positiveFormat = "0.##E+0"
         Number.formatter.positiveFormat = "0.##E0"
         Number.formatter.exponentSymbol = "e"
         return Number.formatter.string(from: self as NSNumber) ?? description
@@ -80,39 +80,12 @@ extension String {
         return NSMutableAttributedString(string: self)
     }
 
-    func index(from: Int) -> Index {
-        return self.index(startIndex, offsetBy: from)
-    }
-    
-//    func substring(from: Int) -> String {
-//        let fromIndex = index(from: from)
-//        return substring(from: fromIndex)
-//    }
-    
-//    func substring(to: Int) -> String {
-//        let toIndex = index(from: to)
-//        return substring(to: toIndex)
-//    }
-    
-//    func substring(with r: Range<Int>) -> String {
-//        let startIndex = index(from: r.lowerBound)
-//        let endIndex = index(from: r.upperBound)
-//        return substring(with: startIndex..<endIndex)
-//    }
-    
-//    func firstIndexOf(character: Character) -> Int {
-////        return self.distance(from:self.startIndex, to:self.characters.index(of:character)!)
-//        return self.distance(from:self.startIndex, to:self.index(of:character)!)
-//    }
-    
     func indexDistance(of character: Character) -> Int? {
-//        guard let index = characters.index(of: character) else { return nil }
         guard let index = self.index(of: character) else { return nil }             // SWIFT 4 Toolchain
         return distance(from: startIndex, to: index)
     }
-}
-
-extension String {
+    
+    // Control number of dots and e(E)-letters to control entered value in NSTextfield
     var dots:Int {
         return self.components(separatedBy: ".").count - 1
     }
@@ -124,47 +97,22 @@ extension String {
 }
 
 // https://gist.github.com/mayoff/d6d9738860ef2d0ac4055f0d12c21533
-public extension NSBezierPath {
-    
-    public var CGPath: CGPath {
-        let path = CGMutablePath()
-        var points = [CGPoint](repeating: .zero, count: 3)
-        for i in 0 ..< self.elementCount {
-            let type = self.element(at: i, associatedPoints: &points)
-            switch type {
-            case .moveToBezierPathElement: path.move(to: NSPoint(x: points[0].x, y: points[0].y))
-            case .lineToBezierPathElement: path.addLine(to: NSPoint(x: points[0].x, y: points[0].y))
-            case .curveToBezierPathElement: path.addCurve(to: NSPoint(x: points[0].x, y: points[0].y), control1: NSPoint(x: points[1].x, y: points[1].y), control2: NSPoint(x: points[2].x, y: points[2].y))
-            case .closePathBezierPathElement: path.closeSubpath()
-            }
-        }
-        return path
-    }
-    /*
- 
-     public extension NSBezierPath {
-     
-        public var CGPath: CGPath {
-            let path = CGMutablePath()
-            var points = [CGPoint](repeating: .zero, count: 3)
-            for i in 0 ..< self.elementCount {
-                let type = self.element(at: i, associatedPoints: &points)
-                switch type {
-                case .moveToBezierPathElement: path.move(to: CGPoint(x: points[0].x, y: points[0].y) )
-                case .lineToBezierPathElement: path.addLine(to: CGPoint(x: points[0].x, y: points[0].y) )
-                case .curveToBezierPathElement: path.addCurve(      to: CGPoint(x: points[2].x, y: points[2].y),
-                    control1: CGPoint(x: points[0].x, y: points[0].y),
-                    control2: CGPoint(x: points[1].x, y: points[1].y) )
-                case .closePathBezierPathElement: path.closeSubpath()
-                }
-            }
-            return path
-        }
-     }
-
-     */
-    
-}
+//public extension NSBezierPath {
+//    public var CGPath: CGPath {
+//        let path = CGMutablePath()
+//        var points = [CGPoint](repeating: .zero, count: 3)
+//        for i in 0 ..< self.elementCount {
+//            let type = self.element(at: i, associatedPoints: &points)
+//            switch type {
+//            case .moveToBezierPathElement: path.move(to: NSPoint(x: points[0].x, y: points[0].y))
+//            case .lineToBezierPathElement: path.addLine(to: NSPoint(x: points[0].x, y: points[0].y))
+//            case .curveToBezierPathElement: path.addCurve(to: NSPoint(x: points[0].x, y: points[0].y), control1: NSPoint(x: points[1].x, y: points[1].y), control2: NSPoint(x: points[2].x, y: points[2].y))
+//            case .closePathBezierPathElement: path.closeSubpath()
+//            }
+//        }
+//        return path
+//    }
+//}
 
 // NSTextView автоматически вызывает touchBar с "текстовыми" функциями. Для того, чтобы отменить это действие по умолчанию, используем это расширение!
 extension NSTextView {
@@ -174,16 +122,12 @@ extension NSTextView {
         
         let touchBar = super.makeTouchBar()
         touchBar?.delegate = self
-        
         return touchBar
     }
 }
 
 public extension CGFloat {
-    
-    /**
-     * Round float to a specific step value
-     */
+    // Round float to a specific step value
     public func roundTo(_ to: CGFloat) -> CGFloat {
         let remainder = self.truncatingRemainder(dividingBy: to)
         if remainder >= to / 2 {

@@ -8,8 +8,7 @@
 
 import Cocoa
 
-// For Binding
-// Binding AC with Data 1. Создаем класс ResData с параметрами, который будут отображаться в NSTableView
+// Binding AC with Data: according to https://www.youtube.com/watch?v=VfVYX7nO9dQ
 @objc(ResData)
 class ResData: NSObject {
     @objc dynamic var sf : String = ""
@@ -43,10 +42,19 @@ class MainParams {
 class ViewController: NSViewController {
     
     // Binding: ArrayController
-    // Binding AC with Data: все как в https://www.youtube.com/watch?v=VfVYX7nO9dQ
+    // Binding AC with Data
     @objc dynamic var resData:[ResData] = []
     @IBOutlet var resAC: NSArrayController!
     @IBOutlet weak var tableView: NSTableView!
+    // Prepare res data for NSTableView
+    func makeResData() -> [ResData] {
+        var md: [ResData] = [ResData(sf: String(format: "%4.2f",Constants.g[0]), res:String(format: "%4.2f",ingotData!.resDist[0]))]
+        for i in 1 ..< Constants.g.count {
+            md += [ResData(sf: String(format: "%4.2f",Constants.g[i]),
+                           res: String(format: "%4.2f",ingotData!.resDist[i]))]
+        }
+        return md
+    }
     
     // User Interface & controls
     @IBOutlet weak var mainStack: NSStackView!
@@ -61,17 +69,6 @@ class ViewController: NSViewController {
     @IBOutlet weak var graphView: GraphView!
     // Stack for Resistivity Data in tableView
     @IBOutlet weak var resView: NSStackView!
-    
-    //var calculationSuccess:Bool = false
-    func makeResData() -> [ResData] {
-        var md: [ResData] = [ResData(sf: String(format: "%4.2f",Constants.g[0]), res:String(format: "%4.2f",ingotData!.resDist[0]))]
-        for i in 1 ..< Constants.g.count {
-            md += [ResData(sf: String(format: "%4.2f",Constants.g[i]),
-                           res: String(format: "%4.2f",ingotData!.resDist[i]))]
-        }
-        return md
-    }
-
     
     // Class instances
     var stringMaker = StringMaker()

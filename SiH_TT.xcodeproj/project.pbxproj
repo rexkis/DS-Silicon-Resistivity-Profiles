@@ -120,7 +120,6 @@
 				CCAB1C851EBDA5D400D69AE6 /* InputView */,
 				CC98EF571EBDC1960078869B /* ResultView */,
 				CC09F3DF1ED6B62E00CE41BF /* GraphView */,
-				CC83D78F1EBA1F1400527FCE /* Assets.xcassets */,
 				CCF2CA151EC0B404008294AC /* Solver */,
 				CCF2CA161EC0B40F008294AC /* Models */,
 				CCFBBA4521A57DB700BC6C53 /* ErrorCast */,
@@ -129,6 +128,7 @@
 				CCAB1C8A1EBDA86800D69AE6 /* Extensions.swift */,
 				CC09F3E01ED6B87100CE41BF /* LazyBoxer.swift */,
 				CCAB1C861EBDA64500D69AE6 /* StringMaker.swift */,
+				CC83D78F1EBA1F1400527FCE /* Assets.xcassets */,
 				CC83D7941EBA1F1400527FCE /* Info.plist */,
 			);
 			path = SiH_TT;

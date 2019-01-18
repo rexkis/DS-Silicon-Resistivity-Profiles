@@ -10,56 +10,37 @@ import Cocoa
 
 class StringMaker: NSObject {
     
+    // Superscripts for
+    // a) "at/cm3",
     var atcm3:NSMutableAttributedString {
-        return substringSuper(string: "at/cm3", char: "3", offset: 0, length: 1)
+        let attString:NSMutableAttributedString = NSMutableAttributedString(string: "at/cm3", attributes: [.font:Constants.font!])
+        attString.setAttributes([.font:Constants.fontSuper!,.baselineOffset:4], range: NSRange(location:5,length:1))
+        return attString
     }
-    
-    private func substringSuper(string:String,char:Character, offset: Int, length: Int) -> NSMutableAttributedString {
-        let fontName = "Helvetica"
-        let fontSize:CGFloat = 12
-        let superFontSize:CGFloat = fontSize*0.7
-        
-        let dist = string.indexDistance(of: char)
-        let range = NSRange(location: dist! + offset, length: length)
-        let attr = NSMutableAttributedString(string: string)
-        attr.superscriptRange(range)
-        attr.addAttribute(NSAttributedStringKey.font, value: NSFont(name: fontName, size: superFontSize)!, range: range)
-        return attr
+    // b) concentrations in GraphView
+    func concWithSuper(value:NumDecomposed) -> NSMutableAttributedString {
+        let str = String(format:"%4.2f", value.value) + "∙10" + String(value.digit)
+        let attString:NSMutableAttributedString = NSMutableAttributedString(string: str, attributes: [.font:Constants.font!])
+        attString.setAttributes([.font:Constants.fontSuper!,.baselineOffset:4], range: NSRange(location:7,length:2))
+        return attString
     }
-    
-    // Converts previously prepared strings of definite (and ONLY this!) format (ex: "1.25∙1016") and make degree (16) superscripted
-    // P.S. Degree may consists of [zero to inf numbers]. "Control point" - multiplication sign "∙"
-    func makeDegreeSuper(string:String) -> NSMutableAttributedString {
-        let fontName = "Helvetica"
-        let fontSize:CGFloat = 12
-        let superFontSize:CGFloat = fontSize*0.7
-        let degreeLength = string.count - 7
-        let range = NSRange(location: 7, length: degreeLength)
-        let attr = NSMutableAttributedString(string: string)
-        attr.superscriptRange(range)
-        attr.addAttribute(NSAttributedStringKey.font, value: NSFont(name: fontName, size: superFontSize)!, range: range)
-        return attr
-    }
-    
-    // Titles for Input and Result views
+
+    // Titles Input view
     var inputTitleLabelsText: [NSMutableAttributedString] {
         let first = "Set Target Resistivities, Ohm∙cm, at solidified fraction".attr()
         let second = "Set source Dopant Densities in Feedstock, ".attr()
         second.append(atcm3)
-        
         let out = [first,second]
         for str in out {
             str.setAlignment(.center, range: NSRange(location: 0, length: str.length))
         }
         return out
     }
-    
+    // Titles for Result view
     var resultTitleLabelsText: [NSMutableAttributedString] {
         let first = "Source Dopant Densities in Feedstock, ".attr()
         let second = "Resistivities, Ohm∙cm, at solidified fraction checkpoints".attr()
-        
         second.append(atcm3)
-
         let out = [first,second]
         for str in out {
             str.setAlignment(.center, range: NSRange(location: 0, length: str.length))
@@ -68,26 +49,12 @@ class StringMaker: NSObject {
     }
 
     // Custom & Calculated Titles for Chart view
-    
-    // New functions
-    func concWithSuper(value:NumDecomposed) -> NSMutableAttributedString {
-        
-        let attrStr = NSMutableAttributedString(string: String(format:"%4.2f",value.value) + "∙10")
-        let gegreeString = String(value.digit)
-        let range = NSRange(location: 0, length: gegreeString.count)
-        let degree = gegreeString.attr()
-        degree.superscriptRange(range)
-        degree.addAttribute(NSAttributedStringKey.font, value: NSFont(name: "Helvetica", size: 8.4)!, range: range)
-        attrStr.append(degree)
-        
-        return attrStr
-    }
     func chartDDString(calcType:CalcType, dopants:[String], concs:[Double]) -> NSMutableAttributedString {
         
         var concStr = "".attr()
         let descr = dopants.map{Constants.dopantsDict[$0]!.description}
-        concStr = calcType == .customR ? "CALCULATED Feedstock Dopant Densities: ".attr()
-            : "CUSTOM Dopant Densities: ".attr()
+        concStr = calcType == .customR ? "Calculated Feedstock Dopant Densities: ".attr()
+            : "Custom Dopant Densities: ".attr()
         
         for i in 0..<concs.count {
             concStr.append((descr[i] + " ").attr())
@@ -102,50 +69,15 @@ class StringMaker: NSObject {
         concStr.append(atcm3)
         return concStr
     }
-    
-//    // Old function
-//    func chartDDString(calcType:CalcType, dopants:[String], concs:[Double]) -> NSAttributedString  {
-//        var concStr = NSMutableAttributedString(string: "")
-//        let dopDescriptions = dopants.map{Constants.dopantsDict[$0]!.description}
-//        let strings = concs.map{String(format:"%4.2f",$0.decomp.value) + "∙10" + String($0.decomp.digit)}
-////        let strings = _strings.map{makeDegreeSuper(string: $0)}
-//        var fullStrings = [String]()
-//        for i in 0..<dopants.count {
-//            fullStrings.append(dopDescriptions[i] + " " + strings[i])
-//        }
-//        
-//        var f = fullStrings.map{substringSuper(string: $0, char: "∙", offset: 3, length: 2)}
-////        var f = fullStrings.map{makeDegreeSuper(string: $0)}
-//        
-//        switch calcType {
-//        case .customR:
-//            concStr = NSMutableAttributedString(string: "CALCULATED Feedstock Dopant Densities: ")
-//        case .customDD:
-//            concStr = NSMutableAttributedString(string: "CUSTOM Feedstock Dopant Densities: ")
-//        }
-//        
-//        for i in 0..<f.count {
-//            concStr.append(f[i])
-//            if i != f.count - 1 {
-//                concStr.append(NSMutableAttributedString(string: ", "))
-//            }
-//            else {
-//                concStr.append(NSMutableAttributedString(string: " "))
-//            }
-//        }
-//        concStr.append(atcm3)
-//        
-//        return concStr
-//    }
-    
+
     func chartResString(calcType:CalcType,checkpoints:String,resProfile:[Double]) -> NSMutableAttributedString {
         var resStr = resProfile.map{String(format:"%4.2f",$0)}
         var str = ""
         switch calcType {
         case .customR:
-            str = "CUSTOM Resistivities at g = \(checkpoints) are equal ["
+            str = "Custom Resistivities at g = \(checkpoints) are equal ["
         case .customDD:
-            str = "CALCULATED Resistivities at g = \(checkpoints) are equal ["
+            str = "Calculated Resistivities at g = \(checkpoints) are equal ["
         }
         let cnt = resProfile.count
         for i in 0..<cnt {
@@ -157,8 +89,7 @@ class StringMaker: NSObject {
                 str.append("] Ohm∙cm ")
             }
         }
-        
-        return NSMutableAttributedString(string: str)
+        return NSMutableAttributedString(string: str, attributes: [.font:Constants.font!])
     }
 
 }
