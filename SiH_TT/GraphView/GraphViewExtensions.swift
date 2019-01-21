@@ -33,16 +33,6 @@ extension GraphView {
             trackNote = "Dopant Densities"
         }
         return trackNote
-        
-//        var trackParameterName = chartTypeName.rawValue
-//        if chartTypeName == .Cmp {trackParameterName += " Level"}
-//        guard chartTypeName != .DD else {
-//            return "Dopant Densities"
-//        }
-//        let trackedValue = yData!.objectAt(Int(100*gValue)) as! Double
-//        return "g = \(gValue), \(trackParameterName) = \(trackedValue.styled)"
-        
-        
     }
     
     func drawTrackMark() {

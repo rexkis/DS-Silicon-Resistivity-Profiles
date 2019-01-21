@@ -33,7 +33,7 @@ public class Axis:ChartBounds {
         super.init(chartBounds:chartBounds)
     }
     
-    let context = NSGraphicsContext.current?.cgContext    // ????????????????
+//    let context = NSGraphicsContext.current?.cgContext    // ????????????????
     let path = NSBezierPath()
     let gridPath = NSBezierPath()
     
@@ -96,18 +96,13 @@ class AxisLimits {
         return []
     }
     private func getYAxisMinMax() -> [Double] {
-        var yAxisMin = 0.0
-        var yAxisMax = 0.0
-        
         let minValRounded = roundDown(minmax[0].decomp.value, toNearest: 0.01)
         let minDigit = minmax[0].decomp.digit
         let maxValRounded = roundUp(minmax[1].decomp.value, toNearest: 0.01)
         let maxDigit = minmax[1].decomp.digit
         
-        yAxisMin = minValRounded > 1 ? minValRounded*pow(10,Double(minDigit)) : pow(10,Double(minDigit))
-        
-        yAxisMax = maxValRounded >= 8 ? pow(10,Double(maxDigit + 1)) : maxValRounded*pow(10,Double(maxDigit))
-        
+        let yAxisMin = minValRounded > 1 ? minValRounded*pow(10,Double(minDigit)) : pow(10,Double(minDigit))
+        let yAxisMax = maxValRounded >= 8 ? pow(10,Double(maxDigit + 1)) : maxValRounded*pow(10,Double(maxDigit))
         return [yAxisMin,yAxisMax]
     }
     private func roundUp(_ number: Double, toNearest: Double) -> Double {

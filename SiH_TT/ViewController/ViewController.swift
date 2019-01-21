@@ -165,11 +165,11 @@ class ViewController: NSViewController {
     func setChartSubtitles() {
         switch calcType {
         case .customR:
-            graphView.customLabelText = stringMaker.chartResString(calcType: calcType, checkpoints: checkpoints,resProfile: resistivityProfile)
-            graphView.calculatedLabelText = stringMaker.chartDDString(calcType: calcType, dopants: currentDopants, concs: initConcs)
+            graphView.customLabel.attributedStringValue = stringMaker.chartResString(calcType: calcType, checkpoints: checkpoints,resProfile: resistivityProfile)
+            graphView.calculatedLabel.attributedStringValue = stringMaker.chartDDString(calcType: calcType, dopants: currentDopants, concs: initConcs)
         case .customDD:
-            graphView.customLabelText = stringMaker.chartDDString(calcType: calcType, dopants: currentDopants, concs: initConcsProfile)
-            graphView.calculatedLabelText = stringMaker.chartResString(calcType: calcType, checkpoints: checkpoints, resProfile: checkPointsResistivities)
+            graphView.customLabel.attributedStringValue = stringMaker.chartDDString(calcType: calcType, dopants: currentDopants, concs: initConcsProfile)
+            graphView.calculatedLabel.attributedStringValue = stringMaker.chartResString(calcType: calcType, checkpoints: checkpoints, resProfile: checkPointsResistivities)
         }
     }      
 

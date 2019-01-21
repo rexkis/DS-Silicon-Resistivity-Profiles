@@ -55,9 +55,9 @@
                     </textFieldCell>
                 </textField>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="r3L-8X-2Hs">
-                    <rect key="frame" x="315" y="10" width="120" height="17"/>
+                    <rect key="frame" x="320" y="10" width="111" height="15"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Solidified fraction, g" id="Hst-wV-4iP">
-                        <font key="font" size="13" name="Helvetica-Light"/>
+                        <font key="font" size="12" name="Helvetica-Light"/>
                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>

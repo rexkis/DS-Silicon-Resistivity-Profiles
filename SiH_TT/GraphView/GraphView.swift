@@ -9,8 +9,6 @@
 import Cocoa
 
 class GConstants {
-    let stringMaker = StringMaker()
-    static let fontName = "Helvetica-Light"
     static let chartTitle = ["DOPANT DENSITIES DISTRIBUTION",
                              "NET DENSITY DISTRIBUTION",
                              "SPECIFIC RESISTIVITY DISTRIBUTION",
@@ -18,26 +16,21 @@ class GConstants {
     static let yAxisTitle = ["Dopant Density, (at/cm3)", "Net Density, (at/cm3)", "Resistivity, (Ohm∙cm)","Compensation level"]
     
     static let chartOrigin = NSPoint(x: 65, y: 50)
+    // Set chart insets in GraphView!!!
     static var chartInsets: (left:CGFloat, top:CGFloat, right:CGFloat, bottom:CGFloat ) {
         return (chartOrigin.x,100,40,chartOrigin.y)
     }
     static let tickedAxisSpace:CGFloat = 0.98
-    
-//    static var parStyle:NSMutableParagraphStyle {
-//        self.parStyle.lineBreakMode = .byTruncatingTail
-//        self.parStyle.alignment = .center
-//        return self.parStyle
-//    }
+
     static var markAttributes: [NSAttributedStringKey: Any] {
         let paragraphStyle = NSMutableParagraphStyle()
         paragraphStyle.lineBreakMode = .byTruncatingTail
         paragraphStyle.alignment = .center
-        return  [NSAttributedStringKey.font: NSFont(name: fontName, size: 12)!,
+        return  [NSAttributedStringKey.font: Constants.font!,
                  NSAttributedStringKey.foregroundColor: NSColor.black,
                  NSAttributedStringKey.paragraphStyle: paragraphStyle]
     }
     static let xMarkSize:NSSize = ("0.1" as NSString).size(withAttributes: markAttributes)
-    
     static let pTypeColor = NSColor(calibratedRed: 0, green: 0, blue: 1, alpha: 0.05)
     static let nTypeColor = NSColor(calibratedRed: 0, green: 1, blue: 0, alpha: 0.05)
     
@@ -64,12 +57,6 @@ class GraphView: NSView {
     @IBOutlet weak var calculatedLabel: NSTextField!
     var titleLabelText:String = "" {
         didSet { titleLabel.stringValue = titleLabelText }
-    }
-    var customLabelText:NSMutableAttributedString = "".attr() {
-        didSet { customLabel.attributedStringValue = customLabelText }
-    }
-    var calculatedLabelText:NSMutableAttributedString = "".attr() {
-        didSet { calculatedLabel.attributedStringValue = calculatedLabelText }
     }
     
     // Labels for Axes names
@@ -161,11 +148,7 @@ class GraphView: NSView {
         self.layer?.borderWidth = 1.0
         self.layer?.cornerRadius = 10.0
     }
-    
-//    func setTitles(index:Int) {
-//        titleLabelText = GConstants.chartTitle[index]
-//        yAxisTitle = GConstants.yAxisTitle[index].attr()
-//    }
+
     func setTitles(index:Int) {
         titleLabelText = GConstants.chartTitle[chartTypeIndex]
         yAxisTitle = GConstants.yAxisTitle[chartTypeIndex].attr()

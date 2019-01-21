@@ -13,16 +13,20 @@ class StringMaker: NSObject {
     // Superscripts for
     // a) "at/cm3",
     var atcm3:NSMutableAttributedString {
-        let attString:NSMutableAttributedString = NSMutableAttributedString(string: "at/cm3", attributes: [.font:Constants.font!])
+        let attString = "at/cm3".attr()
         attString.setAttributes([.font:Constants.fontSuper!,.baselineOffset:4], range: NSRange(location:5,length:1))
         return attString
     }
     // b) concentrations in GraphView
     func concWithSuper(value:NumDecomposed) -> NSMutableAttributedString {
-        let str = String(format:"%4.2f", value.value) + "∙10" + String(value.digit)
-        let attString:NSMutableAttributedString = NSMutableAttributedString(string: str, attributes: [.font:Constants.font!])
+//        let str = String(format:"%4.2f", value.value) + "∙10" + String(value.digit)
+        let str = makeStringFromDecomposed(value: value)
+        let attString = str.attr()
         attString.setAttributes([.font:Constants.fontSuper!,.baselineOffset:4], range: NSRange(location:7,length:2))
         return attString
+    }
+    func makeStringFromDecomposed(value:NumDecomposed) -> String {
+        return String(format:"%4.2f", value.value) + "∙10" + String(value.digit)
     }
 
     // Titles Input view
@@ -40,7 +44,7 @@ class StringMaker: NSObject {
     var resultTitleLabelsText: [NSMutableAttributedString] {
         let first = "Source Dopant Densities in Feedstock, ".attr()
         let second = "Resistivities, Ohm∙cm, at solidified fraction checkpoints".attr()
-        second.append(atcm3)
+        first.append(atcm3)
         let out = [first,second]
         for str in out {
             str.setAlignment(.center, range: NSRange(location: 0, length: str.length))
@@ -50,11 +54,8 @@ class StringMaker: NSObject {
 
     // Custom & Calculated Titles for Chart view
     func chartDDString(calcType:CalcType, dopants:[String], concs:[Double]) -> NSMutableAttributedString {
-        
-        var concStr = "".attr()
         let descr = dopants.map{Constants.dopantsDict[$0]!.description}
-        concStr = calcType == .customR ? "Calculated Feedstock Dopant Densities: ".attr()
-            : "Custom Dopant Densities: ".attr()
+        let concStr = calcType == .customR ? "Calculated Feedstock Dopant Densities: ".attr() : "Custom Dopant Densities: ".attr()
         
         for i in 0..<concs.count {
             concStr.append((descr[i] + " ").attr())
@@ -89,7 +90,7 @@ class StringMaker: NSObject {
                 str.append("] Ohm∙cm ")
             }
         }
-        return NSMutableAttributedString(string: str, attributes: [.font:Constants.font!])
+        return str.attr()
     }
 
 }

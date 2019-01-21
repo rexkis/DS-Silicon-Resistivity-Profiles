@@ -77,7 +77,7 @@ extension Sequence where Self.Iterator.Element == Double {
 extension String {
     
     func attr() -> NSMutableAttributedString {
-        return NSMutableAttributedString(string: self)
+        return NSMutableAttributedString(string: self, attributes: [.font:Constants.font!])
     }
 
     func indexDistance(of character: Character) -> Int? {
