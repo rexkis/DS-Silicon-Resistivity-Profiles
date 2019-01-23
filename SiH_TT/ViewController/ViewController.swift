@@ -48,9 +48,9 @@ class ViewController: NSViewController {
     @IBOutlet weak var tableView: NSTableView!
     // Prepare res data for NSTableView
     func makeResData() -> [ResData] {
-        var md: [ResData] = [ResData(sf: String(format: "%4.2f",Constants.g[0]), res:String(format: "%4.2f",ingotData!.resDist[0]))]
+        var md: [ResData] = [ResData(sf: Constants.gString[0], res:String(format: "%4.2f",ingotData!.resDist[0]))]
         for i in 1 ..< Constants.g.count {
-            md += [ResData(sf: String(format: "%4.2f",Constants.g[i]),
+            md += [ResData(sf: Constants.gString[i],
                            res: String(format: "%4.2f",ingotData!.resDist[i]))]
         }
         return md
@@ -79,7 +79,6 @@ class ViewController: NSViewController {
     // Main Parameters
     var currentDopants = [String]() {
         didSet {
-            checkpoints = currentDopants.count == 2 ? "[0.05,0.85]" : "[0.05,0.50,0.85]"
             // Hiding controls in resultView. InputView does it "himself"
             let hider = currentDopants.count == 2 ? true : false
             _ = [resultView.resultLabel2,resultView.res2].map{$0?.isHidden = hider}
@@ -98,7 +97,9 @@ class ViewController: NSViewController {
     }
     
     // Variables used in further calculations
-    var checkpoints:String = ""
+    var checkpoints: String {
+        return currentDopants.count == 2 ? "[0.05,0.85]" : "[0.05,0.50,0.85]"
+    }
     var gExtraLabels:[String] {
         return currentDopants.count == 2 ? ["g = 0.05", "g = 0.85"] : ["g = 0.05", "g = 0.50", "g = 0.85"]
     }
@@ -175,6 +176,8 @@ class ViewController: NSViewController {
 
     override func viewDidLayout() {
         makeBorders()
+//        print("viewDidLayout: chartOrigin in window coordinates")
+//        print(graphView.convert(GConstants.chartOrigin, to: nil))
     }
     
 
@@ -199,10 +202,10 @@ class ViewController: NSViewController {
             graphView.yGridEnabled = settingsState[1] == 0 ? false : true
             graphView.fillPNAreas = settingsState[2] == 0 ? false : true
         }
-
+        
         addObservers()
         setInitialState()
-
+        
 //        print("ResData[75]: sf = \(resData[75].sf), res = \(resData[75].res)")
         
 //        let appDomain = Bundle.main.bundleIdentifier!

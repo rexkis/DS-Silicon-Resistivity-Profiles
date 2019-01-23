@@ -16,6 +16,7 @@ typealias Distributions = (dopDist:[[Double]], netDist:[[Double]], comp:[Double]
 class Constants {
     
     static let g = (0...99).map{Double($0)*0.01}
+    static let gString = g.map{String(format: "%4.2f", $0)}
     static let dopantsDict:DopantsParamDict = [
         "B":(10.811,  0.8,  "Boron",NSColor.blue,"P-type"),
         "P":(30.97376,0.35, "Phosphorus",NSColor.green,"N-type"),

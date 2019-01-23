@@ -11,12 +11,12 @@ import Cocoa
 // Tracking
 extension GraphView {
     // Calculate corrected track Point (taking in account coordinates of graphView relative to WINDOW!)
-    func getTrackPoint(point:NSPoint) -> NSPoint {
-        let graphViewRect:NSRect = self.convert(self.bounds, to: nil)
-        let xPoint = point.x - graphViewRect.origin.x - origin.x
-        let yPoint = point.y - graphViewRect.origin.y - origin.y
-        return NSPoint(x: xPoint, y: yPoint)
-    }
+//    func getTrackPoint(point:NSPoint) -> NSPoint {
+//        let graphViewRect:NSRect = self.convert(self.bounds, to: nil)
+//        let xPoint = point.x - graphViewRect.origin.x - origin.x
+//        let yPoint = point.y - graphViewRect.origin.y - origin.y
+//        return NSPoint(x: xPoint, y: yPoint)
+//    }
     
     func getTrackValueNote() -> String {
         var trackParameterName = chartTypeName.rawValue
@@ -27,7 +27,7 @@ extension GraphView {
         
         if chartTypeName != .DD {
             trackedValue = yData!.objectAt(Int(100*gValue)) as! Double
-            trackNote = "g = \(gValue), \(trackParameterName) = \(trackedValue.styled)"
+            trackNote = "g = \(String(format: "%4.2f", gValue)), \(trackParameterName) = \(trackedValue.styled)"
         }
         else {
             trackNote = "Dopant Densities"

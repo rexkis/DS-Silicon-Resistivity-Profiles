@@ -98,9 +98,9 @@ class GraphView: NSView {
     var yData: AnyObject?
     
     // MARK: Chart axis lengths
-    var xAxisLength:CGFloat = 0
+    var xAxisLength:CGFloat = 0.0
     var tickedXLength:CGFloat {return xAxisLength*GConstants.tickedAxisSpace}
-    var yAxisLength:CGFloat = 0
+    var yAxisLength:CGFloat = 0.0
     var tickedYLength:CGFloat {return yAxisLength*GConstants.tickedAxisSpace}
     
 //    let graphViewRect:NSRect = self.convert(self.bounds, to: nil)
@@ -120,7 +120,15 @@ class GraphView: NSView {
         didSet { needsDisplay = true }
     }
     var trackEnabled:Bool = false {
-        didSet { needsDisplay = true }
+        didSet {
+            needsDisplay = true
+            needsToRedraw = false
+            trackingRect = NSRect(x: graphRect.origin.x + origin.x,
+                                  y: graphRect.origin.y + origin.y,
+                                  width: tickedXLength*0.99,
+                                  height: tickedYLength)
+            
+        }
     }
     
     // Axes Drawing Parameters
@@ -133,13 +141,12 @@ class GraphView: NSView {
     var currentTrackPoint:NSPoint = NSPoint.zero
     var gValue:Double = 0.0
     
-    var trackingRect: NSRect {
-        return NSRect(x: origin.x,
-                      y: origin.y,
-                      width: tickedXLength*0.99,
-                      height: tickedYLength)
+    // Положение graphView в системе координат вида всего окна. Это значение затем читается во viewController для определения NSTrackingArea
+    var graphRect:NSRect {
+        return self.convert(self.bounds, to: nil)
     }
-    var trackView:NSView {return NSView(frame: trackingRect)}
+    var trackingRect = NSRect.zero
+//    var trackView:NSView = NSView(frame: NSRect.zero)
     var trackNote:String {return getTrackValueNote()}
     
     override func viewWillDraw() {
@@ -170,6 +177,26 @@ class GraphView: NSView {
             drawChart()
         }
     }
+
+    // Tracking
+    override func mouseDragged(with event: NSEvent) {
+        getNormalizedGValue(event.locationInWindow)
+    }
+    override func mouseDown(with event: NSEvent) {
+        getNormalizedGValue(event.locationInWindow)
+    }
+    func getNormalizedGValue(_ location: CGPoint) {
+        guard trackEnabled else {
+            needsToRedraw = false
+            return
+        }
+        guard trackingRect.contains(location) else {return}
+        let currentXPoint = location.x - self.convert(origin, to: nil).x
+        let normG = currentXPoint/tickedXLength
+        gValue = Double(normG.roundTo(0.01))
+        needsDisplay = true
+        //        needsToRedraw = true
+    }
     
     func drawChart() {
         for v in subviews {
@@ -198,32 +225,8 @@ class GraphView: NSView {
         else {
             needsDisplay = true
         }
-        
     }
 
-    override func mouseDown(with event: NSEvent) {
-        guard trackEnabled == true else {return}
-        currentTrackPoint = getTrackPoint(point: event.locationInWindow)
-        getCurrentTouch()
-        needsDisplay = true
-    }
-    override func mouseDragged(with event: NSEvent) {
-        guard trackEnabled == true else {return}
-        currentTrackPoint = getTrackPoint(point: event.locationInWindow)
-        
-        getCurrentTouch()
-        needsDisplay = true
-    }
-    func getCurrentTouch() {
-        // Проверяем принадлежность текущей точки trackView. Если нет - выход (надо удалить предыдущее, если есть)
-        let inRange = trackView.bounds.contains(currentTrackPoint)
-        guard inRange == true else {return}
-        
-        // Normalize x coordinates according g-value (step = 0.01)
-        let normG = currentTrackPoint.x/tickedXLength
-        gValue = Double(normG.roundTo(0.01))
-    }
-     
     func clearGraphView() {
         context!.clear(self.bounds)
         for v in subviews {

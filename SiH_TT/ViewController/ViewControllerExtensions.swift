@@ -27,7 +27,7 @@ extension ViewController {
         
         firstRun = false
         getChartTypeName()
-        showGraphView()
+        showGraphView()  
     }
 
     private func setStartValues() {
