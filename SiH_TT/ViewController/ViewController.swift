@@ -31,13 +31,6 @@ enum CalcType:String {
     case customDD = "CustomDD"
 }
 
-class MainParams {
-    static let shared = MainParams()
-    
-    var currentDopants: [String]?
-    var calcType:CalcType?
-}
-
 @objcMembers
 class ViewController: NSViewController {
     
@@ -77,13 +70,15 @@ class ViewController: NSViewController {
     
     // Variables from UI
     // Main Parameters
+    var dopantsCount: Int = 0
     var currentDopants = [String]() {
         didSet {
             // Hiding controls in resultView. InputView does it "himself"
-            let hider = currentDopants.count == 2 ? true : false
+            let hider = dopantsCount == 2 ? true : false
             _ = [resultView.resultLabel2,resultView.res2].map{$0?.isHidden = hider}
             setInputResultLabels()
             resultView.currentDopants = currentDopants
+            dopantsCount = currentDopants.count
         }
     }
     var calcType:CalcType = .customR {
@@ -98,14 +93,14 @@ class ViewController: NSViewController {
     
     // Variables used in further calculations
     var checkpoints: String {
-        return currentDopants.count == 2 ? "[0.05,0.85]" : "[0.05,0.50,0.85]"
+        return dopantsCount == 2 ? "[0.05,0.85]" : "[0.05,0.50,0.85]"
     }
     var gExtraLabels:[String] {
-        return currentDopants.count == 2 ? ["g = 0.05", "g = 0.85"] : ["g = 0.05", "g = 0.50", "g = 0.85"]
+        return dopantsCount == 2 ? ["g = 0.05", "g = 0.85"] : ["g = 0.05", "g = 0.50", "g = 0.85"]
     }
     var dopantsDescriptionArray:[String] {
         var arr = [String]()
-        for i in 0..<currentDopants.count {
+        for i in 0..<dopantsCount {
             arr.append(Constants.dopantsDict[currentDopants[i]]!.description)
         }
         return arr
@@ -229,13 +224,13 @@ class ViewController: NSViewController {
     func setInputResultLabels() {
         switch calcType {
         case .customDD:
-            for i in 0..<currentDopants.count {
+            for i in 0..<dopantsCount {
                 resultView.resultLabelsArray[i].stringValue = String(gExtraLabels[i])
                 inputView.inputLabelsArray[i].stringValue = dopantsDescriptionArray[i]
                 
             }
         case .customR:
-            for i in 0..<currentDopants.count {
+            for i in 0..<dopantsCount {
                 resultView.resultLabelsArray[i].stringValue = dopantsDescriptionArray[i]
                 inputView.inputLabelsArray[i].stringValue = String(gExtraLabels[i])
             }

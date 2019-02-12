@@ -31,7 +31,6 @@
 		CCB33B551EE5BE6600AD7F9F /* AxesExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCB33B531EE5BE6600AD7F9F /* AxesExtensions.swift */; };
 		CCE8803A1ED81A220028877F /* Curves.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCE880391ED81A220028877F /* Curves.swift */; };
 		CCF2CA121EC0B040008294AC /* Feedstock.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCF2CA111EC0B040008294AC /* Feedstock.swift */; };
-		CCF2CA141EC0B3F3008294AC /* InitConcsFinder.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCF2CA131EC0B3F3008294AC /* InitConcsFinder.swift */; };
 		CCF2CA181EC0B455008294AC /* Conversion.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCF2CA171EC0B455008294AC /* Conversion.swift */; };
 		CCF2CA1A1EC33DC1008294AC /* Ingot.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCF2CA191EC33DC1008294AC /* Ingot.swift */; };
 		CCFBBA4721A57E2500BC6C53 /* ErrorManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCFBBA4621A57E2500BC6C53 /* ErrorManager.swift */; };
@@ -64,7 +63,6 @@
 		CCB33B531EE5BE6600AD7F9F /* AxesExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AxesExtensions.swift; sourceTree = "<group>"; };
 		CCE880391ED81A220028877F /* Curves.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Curves.swift; sourceTree = "<group>"; };
 		CCF2CA111EC0B040008294AC /* Feedstock.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Feedstock.swift; sourceTree = "<group>"; };
-		CCF2CA131EC0B3F3008294AC /* InitConcsFinder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InitConcsFinder.swift; sourceTree = "<group>"; };
 		CCF2CA171EC0B455008294AC /* Conversion.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Conversion.swift; sourceTree = "<group>"; };
 		CCF2CA191EC33DC1008294AC /* Ingot.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Ingot.swift; sourceTree = "<group>"; };
 		CCFBBA4621A57E2500BC6C53 /* ErrorManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorManager.swift; sourceTree = "<group>"; };
@@ -175,7 +173,6 @@
 		CCF2CA151EC0B404008294AC /* Solver */ = {
 			isa = PBXGroup;
 			children = (
-				CCF2CA131EC0B3F3008294AC /* InitConcsFinder.swift */,
 			);
 			path = Solver;
 			sourceTree = "<group>";
@@ -291,7 +288,6 @@
 				CC98EF551EBDC1900078869B /* ResultView.swift in Sources */,
 				CC83D78C1EBA1F1400527FCE /* AppDelegate.swift in Sources */,
 				CCF2CA1A1EC33DC1008294AC /* Ingot.swift in Sources */,
-				CCF2CA141EC0B3F3008294AC /* InitConcsFinder.swift in Sources */,
 				CCF2CA181EC0B455008294AC /* Conversion.swift in Sources */,
 				CCF2CA121EC0B040008294AC /* Feedstock.swift in Sources */,
 				CC0F2F4721AAE8A400E14022 /* VCNotifications.swift in Sources */,

@@ -53,19 +53,20 @@ extension YAxis {
         var minorValues = [Double]()
         var startInnerLoopIndex = 0
         var endInnerLoopIndex = 0
-        
-//        if minor.digits.count == 1 {
-//            startInnerLoopIndex = Int(minY.value) != 1 ? Int(ceil(minY.value)) : 2
-//            endInnerLoopIndex = Int(maxY.value) != 1 ? Int(maxY.value) : 9
-//        }
-        
-        for i in 0...outerLoops {
 
+//        Здесь корень ошибки при B,P:1e16,1e15. endInnerLoopIndex < startInnerLoopIndex
+//        При этом данные лежат в диапазоне 1.13 - 1.83
+        for i in 0...outerLoops {
             if i == 0 { // Все данные в пределах одного степенного диапазона
                 startInnerLoopIndex = (Int(minY.value) != 1) && (Int(minY.value) != 9) ? Int(ceil(minY.value)) : 2
                 endInnerLoopIndex = outerLoops != 0 ? 9 : Int(maxY.value)
-                for j in startInnerLoopIndex...endInnerLoopIndex {
-                    minorValues.append(Double(j)*pow(10.0,Double(minor.digits[i])))
+                if endInnerLoopIndex < startInnerLoopIndex {
+                    minorValues.append(pow(10.0,Double(minor.digits[i])))
+                }
+                else {
+                    for j in startInnerLoopIndex...endInnerLoopIndex {
+                        minorValues.append(Double(j)*pow(10.0,Double(minor.digits[i])))
+                    }
                 }
             }
             if i > 0 && i < outerLoops {    // Промежуточные степенные диапазоны

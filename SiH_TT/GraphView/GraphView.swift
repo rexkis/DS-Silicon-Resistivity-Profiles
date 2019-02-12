@@ -146,7 +146,6 @@ class GraphView: NSView {
         return self.convert(self.bounds, to: nil)
     }
     var trackingRect = NSRect.zero
-//    var trackView:NSView = NSView(frame: NSRect.zero)
     var trackNote:String {return getTrackValueNote()}
     
     override func viewWillDraw() {

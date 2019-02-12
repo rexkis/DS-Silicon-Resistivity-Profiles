@@ -50,6 +50,9 @@ extension GraphView {
         trackNote.draw(with: rect,
                        options: .usesLineFragmentOrigin,
                        attributes: GConstants.markAttributes, context: nil)
+//        let ttt = trackNote.attr()
+//        ttt.draw(with: rect, options: .usesLineFragmentOrigin)
+//        ttt.draw(in: rect)
         
         xPosition -= 2
         yPosition -= 5

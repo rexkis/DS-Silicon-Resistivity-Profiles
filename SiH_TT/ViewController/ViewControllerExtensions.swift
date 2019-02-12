@@ -30,15 +30,12 @@ extension ViewController {
         showGraphView()  
     }
 
+    // Get currentDopants and calcType from Used=rDefaults; set inputView comboBox and radioCustomDD/R correct indexes, inputView inputTitleLabel and resultView resultLabel Texts
     private func setStartValues() {
-        // Получаем из userDefaults значения currentDopants. Из него определяем индекс текущего значения currentDopants в inputView comboBox (в самом inputView с помощью этого индекса ставим необходимую строку для currentDopants)
         currentDopants = userDefaults.value(forKey: "currentDopants")  as? [String] ?? ["B","P","Ga"]
         inputView.currentDopantsIndex = findDopantsIndex(dopants: currentDopants)!
 
-        
-        // Get OR Set calcType
         var idx:Int = 0
-        // Читаем строку calcTypeString из userDefaults. Переводим строку в значение calcType; в inputView делаем отмеченным необходимый radioButton
         if let _calcType = userDefaults.value(forKey: "calcTypeString") as? String {
             switch _calcType {
             case "CustomR":
@@ -55,10 +52,11 @@ extension ViewController {
             calcType = .customR
             inputView.radioCustomR.state = NSControl.StateValue(rawValue: 1)
         }
-        // В зависимости от определенного ранее индекса idx в inputView и resultView делаем заголовки
+
         inputView.inputTitleLabel.attributedStringValue = stringMaker.inputTitleLabelsText[idx]
         resultView.resultLabel.attributedStringValue = stringMaker.resultTitleLabelsText[idx]
     }
+    
     private func fillFields() {
         switch calcType {
         case .customDD:
@@ -67,13 +65,9 @@ extension ViewController {
             // Fill in INPUT fields tfArray with saved initial dopant densities
             if let concsProfile = x, x!.isEmpty != true {
                 for i in 0..<concsProfile.count {
-                    
-// !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-                    
                     // Если вылетает при СОХРАНЕННЫХ неправильных значениях ввода - раскомментить строку ниже и закомментить строку после нее
-//                    inputView.tfArray[i].stringValue = "1e16"
-                    // Смотреть и ИСПРАВЛЯТЬ вариант [B,P,Ga]/[1e16,1e17,1e16] - в таком варианте вылетает
-                    // Также при [B,P]/[1e16,1e15]
+//                        inputView.tfArray[i].stringValue = "1e16"
+                    // Смотреть и ИСПРАВЛЯТЬ вариант [B,P]/[1e16,1e15] - вылетает!
                     inputView.tfArray[i].stringValue = concsProfile[i].styled
                 }
             }
@@ -120,14 +114,6 @@ extension ViewController {
         }
         
     }
-    
-//    // Searching index of currentDopants in Constants.dopantsArray
-//    func findDopantsIndex(dopants:[String]) -> Int? {
-//        for (index,value) in Constants.dopantsArray.enumerated() {
-//            if value == currentDopants {return index}
-//        }
-//        return nil
-//    }
 }
 
 
@@ -222,7 +208,7 @@ extension ViewController {
             initConcsProfile = inputFields
             userDefaults.set(initConcsProfile, forKey: "initConcsProfile")
             var resDistrib = ingotData?.resDist
-            var checkPointsRes = currentDopants.count == 2 ?
+            var checkPointsRes = dopantsCount == 2 ?
                 [resDistrib?[5],resDistrib?[85]] :
                 [resDistrib?[5],resDistrib?[50],resDistrib?[85]]
             for i in 0..<checkPointsRes.count {
