@@ -9,6 +9,7 @@
 import Cocoa
 import Accelerate
 
+// This class only for CustomR calculations: we find initial dopant densities in feedstock  in case of custom resistivity values at checkpoints
 class Feedstock: NSObject {
     
     // Initializing
@@ -72,6 +73,7 @@ class Feedstock: NSObject {
         return rightMatrix
     }
     
+    // https://stackoverflow.com/questions/41526674/solving-system-of-equations-in-swift
     private func getInitConcs() -> [Double] {
         let N = UInt(dopantsCount)
         

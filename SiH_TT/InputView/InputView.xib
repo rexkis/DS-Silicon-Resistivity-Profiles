@@ -1,12 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="12120" systemVersion="16E195" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="12120"/>
-        <capability name="box content view" minToolsVersion="7.0"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14460.31"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
-        <capability name="stacking Non-gravity area distributions on NSStackView" minToolsVersion="7.0" minSystemVersion="10.11"/>
-        <capability name="system font weights other than Regular or Bold" minToolsVersion="7.0"/>
     </dependencies>
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="InputView" customModule="SiH_TT" customModuleProvider="target">
@@ -32,7 +29,7 @@
             <rect key="frame" x="0.0" y="0.0" width="400" height="170"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
             <subviews>
-                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="NO" translatesAutoresizingMaskIntoConstraints="NO" id="t80-Yu-yDY">
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="t80-Yu-yDY">
                     <rect key="frame" x="8" y="146" width="384" height="19"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="CALCULATION PARAMETERS" id="Xl7-RU-IzN">
                         <font key="font" metaFont="systemSemibold" size="16"/>
@@ -40,8 +37,8 @@
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
-                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hyj-NM-Ega">
-                    <rect key="frame" x="18" y="130" width="193" height="16"/>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Hyj-NM-Ega">
+                    <rect key="frame" x="8" y="130" width="193" height="16"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="189" id="w6P-oU-rKE"/>
                     </constraints>
@@ -52,7 +49,7 @@
                     </textFieldCell>
                 </textField>
                 <box boxType="custom" title="Box" translatesAutoresizingMaskIntoConstraints="NO" id="0XU-xT-Zj2">
-                    <rect key="frame" x="20" y="77" width="189" height="50"/>
+                    <rect key="frame" x="10" y="77" width="189" height="50"/>
                     <view key="contentView" id="SId-kf-Jxm">
                         <rect key="frame" x="1" y="1" width="187" height="48"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -90,13 +87,13 @@
                     </constraints>
                 </box>
                 <box boxType="custom" title="Box" translatesAutoresizingMaskIntoConstraints="NO" id="Gej-it-6Z3">
-                    <rect key="frame" x="230" y="78" width="150" height="48"/>
+                    <rect key="frame" x="209" y="78" width="181" height="48"/>
                     <view key="contentView" id="vl2-vA-YEv">
-                        <rect key="frame" x="1" y="1" width="148" height="46"/>
+                        <rect key="frame" x="1" y="1" width="179" height="46"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <comboBox verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="YES" translatesAutoresizingMaskIntoConstraints="NO" id="DPg-as-hl8">
-                                <rect key="frame" x="11" y="9" width="129" height="26"/>
+                                <rect key="frame" x="27" y="9" width="129" height="26"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="126" id="I5x-Ss-JaW"/>
                                 </constraints>
@@ -117,7 +114,7 @@
                     </view>
                 </box>
                 <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" allowsCharacterPickerTouchBarItem="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ezD-hT-H8L">
-                    <rect key="frame" x="19" y="54" width="362" height="18"/>
+                    <rect key="frame" x="9" y="54" width="382" height="18"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="18" id="CAg-Nh-gNm"/>
                     </constraints>
@@ -127,8 +124,8 @@
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
-                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="NO" translatesAutoresizingMaskIntoConstraints="NO" id="S4N-CG-itX">
-                    <rect key="frame" x="228" y="130" width="154" height="16"/>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="S4N-CG-itX">
+                    <rect key="frame" x="207" y="130" width="185" height="16"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="Set Custom Dopants" id="rJM-q9-AjH">
                         <font key="font" metaFont="systemLight" size="12"/>
                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -138,7 +135,7 @@
                 <stackView distribution="fillEqually" orientation="horizontal" alignment="top" spacing="10" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="3Gg-Eo-v6U">
                     <rect key="frame" x="48" y="33" width="305" height="16"/>
                     <subviews>
-                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Pai-GA-6xq">
+                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Pai-GA-6xq">
                             <rect key="frame" x="-2" y="0.0" width="99" height="16"/>
                             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="g = 0.05" id="Uu1-pS-b6m">
                                 <font key="font" metaFont="systemLight" size="12"/>
@@ -146,7 +143,7 @@
                                 <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                             </textFieldCell>
                         </textField>
-                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="NO" translatesAutoresizingMaskIntoConstraints="NO" id="k80-62-gxm">
+                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="k80-62-gxm">
                             <rect key="frame" x="103" y="0.0" width="99" height="16"/>
                             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="g = 0.50" id="sGi-Xh-AKE">
                                 <font key="font" metaFont="systemLight" size="12"/>
@@ -154,7 +151,7 @@
                                 <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                             </textFieldCell>
                         </textField>
-                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NsL-wi-A95">
+                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="NsL-wi-A95">
                             <rect key="frame" x="208" y="0.0" width="99" height="16"/>
                             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="g = 0.85" id="URZ-Wo-NFc">
                                 <font key="font" metaFont="systemLight" size="12"/>
@@ -180,27 +177,27 @@
                 <stackView distribution="fillEqually" orientation="horizontal" alignment="top" spacing="10" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" placeholderIntrinsicWidth="305" placeholderIntrinsicHeight="22" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8zs-rZ-Axh">
                     <rect key="frame" x="48" y="9" width="305" height="22"/>
                     <subviews>
-                        <textField verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="NO" translatesAutoresizingMaskIntoConstraints="NO" id="n7V-QM-INd">
+                        <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="n7V-QM-INd">
                             <rect key="frame" x="0.0" y="0.0" width="95" height="22"/>
                             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" alignment="center" drawsBackground="YES" id="yvz-am-jke">
                                 <font key="font" metaFont="system"/>
-                                <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                 <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                             </textFieldCell>
                         </textField>
-                        <textField verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XdE-vv-y9F">
+                        <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="XdE-vv-y9F">
                             <rect key="frame" x="105" y="0.0" width="95" height="22"/>
                             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" alignment="center" drawsBackground="YES" id="5SQ-VX-ijs">
                                 <font key="font" metaFont="system"/>
-                                <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                 <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                             </textFieldCell>
                         </textField>
-                        <textField verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DDO-PO-ES9">
+                        <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="DDO-PO-ES9">
                             <rect key="frame" x="210" y="0.0" width="95" height="22"/>
                             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" alignment="center" drawsBackground="YES" id="7ak-sI-FtL">
                                 <font key="font" metaFont="system"/>
-                                <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                 <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                             </textFieldCell>
                         </textField>
@@ -229,7 +226,7 @@
                 <constraint firstItem="Hyj-NM-Ega" firstAttribute="top" secondItem="t80-Yu-yDY" secondAttribute="bottom" id="En1-UC-G92"/>
                 <constraint firstItem="3Gg-Eo-v6U" firstAttribute="top" secondItem="ezD-hT-H8L" secondAttribute="bottom" constant="5" id="GHj-HE-ShS"/>
                 <constraint firstItem="Gej-it-6Z3" firstAttribute="leading" secondItem="S4N-CG-itX" secondAttribute="leading" id="Hic-NB-Jqn"/>
-                <constraint firstItem="S4N-CG-itX" firstAttribute="leading" secondItem="Hyj-NM-Ega" secondAttribute="trailing" constant="21" id="Jdn-NC-KoW"/>
+                <constraint firstItem="S4N-CG-itX" firstAttribute="leading" secondItem="Hyj-NM-Ega" secondAttribute="trailing" constant="10" id="Jdn-NC-KoW"/>
                 <constraint firstItem="Gej-it-6Z3" firstAttribute="height" secondItem="SId-kf-Jxm" secondAttribute="height" id="N3j-HD-CDB"/>
                 <constraint firstItem="8zs-rZ-Axh" firstAttribute="top" secondItem="3Gg-Eo-v6U" secondAttribute="bottom" constant="2" id="OuR-cL-qL1"/>
                 <constraint firstItem="ezD-hT-H8L" firstAttribute="top" secondItem="0XU-xT-Zj2" secondAttribute="bottom" constant="5" id="TBF-3z-Dpp"/>
@@ -237,9 +234,9 @@
                 <constraint firstItem="S4N-CG-itX" firstAttribute="centerY" secondItem="Hyj-NM-Ega" secondAttribute="centerY" id="cOa-Qs-xdh"/>
                 <constraint firstItem="t80-Yu-yDY" firstAttribute="top" secondItem="Hz6-mo-xeY" secondAttribute="top" constant="5" id="m58-1Y-hgs"/>
                 <constraint firstItem="Gej-it-6Z3" firstAttribute="trailing" secondItem="S4N-CG-itX" secondAttribute="trailing" id="nTm-QJ-EPr"/>
-                <constraint firstItem="Hyj-NM-Ega" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" constant="20" id="o6B-M1-zb4"/>
+                <constraint firstItem="Hyj-NM-Ega" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" constant="10" id="o6B-M1-zb4"/>
                 <constraint firstItem="0XU-xT-Zj2" firstAttribute="leading" secondItem="Hyj-NM-Ega" secondAttribute="leading" id="qlg-na-Xnt"/>
-                <constraint firstAttribute="trailing" secondItem="S4N-CG-itX" secondAttribute="trailing" constant="20" id="sR1-qz-FYr"/>
+                <constraint firstAttribute="trailing" secondItem="S4N-CG-itX" secondAttribute="trailing" constant="10" id="sR1-qz-FYr"/>
                 <constraint firstItem="ezD-hT-H8L" firstAttribute="leading" secondItem="SId-kf-Jxm" secondAttribute="leading" id="z6L-v4-ZkX"/>
             </constraints>
         </customView>

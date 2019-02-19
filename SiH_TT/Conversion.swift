@@ -8,8 +8,6 @@
 
 import Cocoa
 
-//typealias FormulaArray = [String : [((Double) -> Double)]]
-
 final class CNV {
     
     // ASTM Conversion

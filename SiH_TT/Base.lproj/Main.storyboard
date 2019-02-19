@@ -987,17 +987,17 @@
                                 <rect key="frame" x="10" y="10" width="945" height="795"/>
                                 <subviews>
                                     <stackView distribution="fillProportionally" orientation="vertical" alignment="centerX" spacing="5" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gCf-kC-k0B">
-                                        <rect key="frame" x="0.0" y="465" width="400" height="330"/>
+                                        <rect key="frame" x="0.0" y="465" width="360" height="330"/>
                                         <subviews>
                                             <customView identifier="InputView" translatesAutoresizingMaskIntoConstraints="NO" id="Okw-9D-BnR" customClass="InputView" customModule="SiH_TT" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="160" width="400" height="170"/>
+                                                <rect key="frame" x="0.0" y="160" width="360" height="170"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="width" constant="400" id="9jX-zu-QEW"/>
+                                                    <constraint firstAttribute="width" constant="360" id="9jX-zu-QEW"/>
                                                     <constraint firstAttribute="height" constant="170" id="jVf-Dn-TxE"/>
                                                 </constraints>
                                             </customView>
                                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="qMH-My-7XK">
-                                                <rect key="frame" x="134" y="118" width="133" height="41"/>
+                                                <rect key="frame" x="114" y="118" width="133" height="41"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="30" id="FzT-MY-Zal"/>
                                                 </constraints>
@@ -1010,9 +1010,9 @@
                                                 </connections>
                                             </button>
                                             <customView translatesAutoresizingMaskIntoConstraints="NO" id="v5c-8s-il6" customClass="ResultView" customModule="SiH_TT" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="0.0" width="400" height="120"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="360" height="120"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="width" constant="400" id="NlB-8s-s0p"/>
+                                                    <constraint firstAttribute="width" constant="360" id="NlB-8s-s0p"/>
                                                     <constraint firstAttribute="height" constant="120" id="yfa-79-BfL"/>
                                                 </constraints>
                                             </customView>
@@ -1029,7 +1029,7 @@
                                         </customSpacing>
                                     </stackView>
                                     <stackView distribution="fill" orientation="vertical" alignment="leading" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="u6e-kL-TOV">
-                                        <rect key="frame" x="405" y="0.0" width="540" height="795"/>
+                                        <rect key="frame" x="365" y="0.0" width="580" height="795"/>
                                         <subviews>
                                             <customView translatesAutoresizingMaskIntoConstraints="NO" id="WE8-KB-J7G" customClass="GraphView" customModule="SiH_TT" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="0.0" width="535" height="795"/>

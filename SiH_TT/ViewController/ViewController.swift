@@ -73,12 +73,12 @@ class ViewController: NSViewController {
     var dopantsCount: Int = 0
     var currentDopants = [String]() {
         didSet {
+            dopantsCount = currentDopants.count
             // Hiding controls in resultView. InputView does it "himself"
             let hider = dopantsCount == 2 ? true : false
             _ = [resultView.resultLabel2,resultView.res2].map{$0?.isHidden = hider}
             setInputResultLabels()
             resultView.currentDopants = currentDopants
-            dopantsCount = currentDopants.count
         }
     }
     var calcType:CalcType = .customR {
@@ -200,8 +200,7 @@ class ViewController: NSViewController {
         
         addObservers()
         setInitialState()
-        
-//        print("ResData[75]: sf = \(resData[75].sf), res = \(resData[75].res)")
+
         
 //        let appDomain = Bundle.main.bundleIdentifier!
 //        let allKeys = userDefaults.dictionaryRepresentation().keys

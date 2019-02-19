@@ -3,10 +3,10 @@
    version = "1.0">
    <ContextStates>
       <ContextState
-         contextName = "ViewController.viewDidLoad():ViewController.swift">
+         contextName = "GraphView.getYAxisData() -&gt; (major : (digits : [Int], values : [Double], labels : [String]), minor : (digits : [Int], values : [Double], labels : [String]), yAxisMinMax : [Double]):GraphView.swift">
          <PersistentStrings>
             <PersistentString
-               value = "resData">
+               value = "minmax">
             </PersistentString>
          </PersistentStrings>
       </ContextState>
@@ -19,18 +19,26 @@
          </PersistentStrings>
       </ContextState>
       <ContextState
+         contextName = "ViewController.dopantsDescriptionArray.getter:ViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "dopantsCount">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
          contextName = "GraphView.(minmax.getter).(closure #1):GraphView.swift">
       </ContextState>
       <ContextState
-         contextName = "Compensation.getCompensation() -&gt; [Double]:Ingot.swift">
-      </ContextState>
-      <ContextState
-         contextName = "GraphView.getYAxisData() -&gt; (major : (digits : [Int], values : [Double], labels : [String]), minor : (digits : [Int], values : [Double], labels : [String]), yAxisMinMax : [Double]):GraphView.swift">
+         contextName = "ViewController.viewDidLoad():ViewController.swift">
          <PersistentStrings>
             <PersistentString
-               value = "minmax">
+               value = "resData">
             </PersistentString>
          </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "Compensation.getCompensation() -&gt; [Double]:Ingot.swift">
       </ContextState>
    </ContextStates>
 </VariablesViewState>
