@@ -19,44 +19,23 @@ class StringMaker: NSObject {
     }
     // b) concentrations in GraphView
     func concWithSuper(value:NumDecomposed) -> NSMutableAttributedString {
-//        let str = String(format:"%4.2f", value.value) + "∙10" + String(value.digit)
-        let str = makeStringFromDecomposed(value: value)
+        let str = [String(format:"%4.2f", value.value),"∙10",String(value.digit)].joined()
         let attString = str.attr()
         attString.setAttributes([.font:Constants.fontSuper!,.baselineOffset:4], range: NSRange(location:7,length:2))
         return attString
     }
-    func makeStringFromDecomposed(value:NumDecomposed) -> String {
-        return String(format:"%4.2f", value.value) + "∙10" + String(value.digit)
-    }
-
-    // Titles Input view
-    var inputTitleLabelsText: [NSMutableAttributedString] {
-        let first = "Set Target Resistivities, Ohm∙cm, at solidified fraction".attr()
-        let second = "Set source Dopant Densities in Feedstock, ".attr()
-        second.append(atcm3)
-        let out = [first,second]
-        for str in out {
-            str.setAlignment(.center, range: NSRange(location: 0, length: str.length))
-        }
-        return out
-    }
-    // Titles for Result view
-    var resultTitleLabelsText: [NSMutableAttributedString] {
-        let first = "Source Dopant Densities in Feedstock, ".attr()
-        let second = "Resistivities, Ohm∙cm, at solidified fraction checkpoints".attr()
-        first.append(atcm3)
-        let out = [first,second]
-        for str in out {
-            str.setAlignment(.center, range: NSRange(location: 0, length: str.length))
-        }
-        return out
-    }
 
     // Custom & Calculated Titles for Chart view
     func chartDDString(calcType:CalcType, dopants:[String], concs:[Double]) -> NSMutableAttributedString {
-        let descr = dopants.map{Constants.dopantsDict[$0]!.description}
-        let concStr = calcType == .customR ? "Calculated Feedstock Dopant Densities: ".attr() : "Custom Dopant Densities: ".attr()
+        var concStr:NSMutableAttributedString = NSMutableAttributedString(string: "")
+        switch calcType {
+        case .customR:
+            concStr = "Calculated Feedstock Dopant Densities: ".attr()
+        default:
+            concStr = "Custom Dopant Densities: ".attr()
+        }
         
+        let descr = dopants.map{Constants.dopantsDict[$0]!.description}
         for i in 0..<concs.count {
             concStr.append((descr[i] + " ").attr())
             concStr.append(concWithSuper(value: concs[i].decomp))

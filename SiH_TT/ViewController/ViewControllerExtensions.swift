@@ -27,34 +27,25 @@ extension ViewController {
         
         firstRun = false
         getChartTypeName()
-        showGraphView()  
+        showGraphView()
     }
 
     // Get currentDopants and calcType from Used=rDefaults; set inputView comboBox and radioCustomDD/R correct indexes, inputView inputTitleLabel and resultView resultLabel Texts
     private func setStartValues() {
         currentDopants = userDefaults.value(forKey: "currentDopants")  as? [String] ?? ["B","P","Ga"]
-        inputView.currentDopantsIndex = findDopantsIndex(dopants: currentDopants)!
 
-        var idx:Int = 0
         if let _calcType = userDefaults.value(forKey: "calcTypeString") as? String {
             switch _calcType {
             case "CustomR":
                 calcType = .customR
-                inputView.radioCustomR.state = NSControl.StateValue(rawValue: 1)
-                idx = 0
             default:
                 calcType = .customDD
-                inputView.radioCustomDD.state = NSControl.StateValue(rawValue: 1)
-                idx = 1
             }
         }
         else {
             calcType = .customR
             inputView.radioCustomR.state = NSControl.StateValue(rawValue: 1)
         }
-
-        inputView.inputTitleLabel.attributedStringValue = stringMaker.inputTitleLabelsText[idx]
-        resultView.resultLabel.attributedStringValue = stringMaker.resultTitleLabelsText[idx]
     }
     
     private func fillFields() {

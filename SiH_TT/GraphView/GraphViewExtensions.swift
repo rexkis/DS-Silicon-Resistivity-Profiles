@@ -26,7 +26,7 @@ extension GraphView {
         var trackedValue:Double = 0
         
         if chartTypeName != .DD {
-            trackedValue = yData!.objectAt(Int(100*gValue)) as! Double
+            trackedValue = yData!.object(at: Int(100*gValue)) as! Double
             trackNote = "g = \(String(format: "%4.2f", gValue)), \(trackParameterName) = \(trackedValue.styled)"
         }
         else {
@@ -79,7 +79,6 @@ extension GraphView {
         negRange = ingotData!.negRange
         
         let colors = conductivityType == "P-type" ? [GConstants.pTypeColor,GConstants.nTypeColor] : [GConstants.nTypeColor,GConstants.pTypeColor]
-        let origin = GConstants.chartOrigin
         
         var path1 = NSBezierPath()
         var path2 = NSBezierPath()
@@ -138,7 +137,7 @@ extension GraphView {
     func drawLegend(dopants:[String]) {
         
         let legendYPosition = calculatedLabel.frame.minY
-        let legendOrigin = CGPoint(x: GConstants.chartOrigin.x + 20, y: legendYPosition - 10)
+        let legendOrigin = CGPoint(x: origin.x + 20, y: legendYPosition - 10)
         let legendLineLength:CGFloat = 80
         
         for i in 0..<currentDopants.count {

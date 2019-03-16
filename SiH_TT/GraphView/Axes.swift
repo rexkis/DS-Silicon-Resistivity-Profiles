@@ -289,10 +289,5 @@ class YAxis:Axis {
         drawTicks()
         drawLabels()
     }
-
-    
-
-    
-    
 }
 

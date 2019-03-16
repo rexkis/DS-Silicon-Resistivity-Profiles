@@ -29,7 +29,12 @@ class InputView: NSView {
     @IBOutlet weak var radioCustomR: NSButton!
     @IBOutlet weak var radioCustomDD: NSButton!
     @IBAction func rbTapped(_ sender: NSButton) {
-        calcType = sender.title == "Custom Resistivities" ? .customR : .customDD
+        switch sender.title {
+        case "Custom Resistivities":
+            calcType = .customR
+        default:
+            calcType = .customDD
+        }
     }
     
     @IBOutlet weak var dopantsCombo: NSComboBox!
@@ -63,8 +68,10 @@ class InputView: NSView {
             clearFields()
             tf0.becomeFirstResponder()
             sendCalcTypeNotification()
+            manageTitlesAndControls()
         }
     }
+    
     var currentDopants: [String]  = [] {
         didSet {
             clearFields()
@@ -72,8 +79,10 @@ class InputView: NSView {
             let hider = currentDopants.count == 2 ? true : false
             _ = [inpLabel2,tf2].map{$0?.isHidden = hider}
             sendCurrentDopantsNotification()
+            currentDopantsIndex = findDopantsIndex(dopants: self.currentDopants)!
         }
     }
+
     var currentDopantsIndex:Int = 0
     let decimalSeparator = NSLocale(localeIdentifier: "US").decimalSeparator as String
     var goodSet:[String] {
@@ -99,6 +108,29 @@ class InputView: NSView {
         tf2.nextKeyView = tf0
     }
     
+    func findDopantsIndex(dopants:[String]) -> Int? {
+        for (index,value) in Constants.dopantsArray.enumerated() {
+            if value == currentDopants {return index}
+        }
+        return nil
+    }
+    func manageTitlesAndControls() {
+        let inputLabels = Titles(dopants: currentDopants, calcType: calcType).setInputLabels()
+        for i in 0..<currentDopants.count {
+            inputLabelsArray[i].stringValue = inputLabels[i]
+        }
+        
+        let inputTitle = Titles(dopants: currentDopants, calcType: calcType).setInputTitle()
+        inputTitleLabel.attributedStringValue = inputTitle
+        
+        switch calcType {
+        case .customR:
+            radioCustomR.state = NSControl.StateValue(rawValue: 1)
+        default:
+            radioCustomDD.state = NSControl.StateValue(rawValue: 1)
+        }
+    }
+    
     // POST Notifications for calcType (rawValue: "calcType") and currentDopants (rawValue: "dopants")
     func sendCalcTypeNotification() {
         NotificationCenter.default.post(name: .nCalcType, object: self, userInfo: ["calcTypeString":calcType.rawValue])
@@ -106,7 +138,6 @@ class InputView: NSView {
     func sendCurrentDopantsNotification() {
         NotificationCenter.default.post(name: .nDopants, object: self, userInfo: ["currentDopants":currentDopants])
     }
-
     func clearFields() {
         tfArray.forEach{$0.stringValue = ""}
     }

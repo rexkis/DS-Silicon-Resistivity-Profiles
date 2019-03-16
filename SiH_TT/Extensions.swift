@@ -44,13 +44,17 @@ extension Double {
     var expStyle:String {
         Number.formatter.locale = Locale(identifier: "US")
         Number.formatter.numberStyle = .scientific
-        //        Number.formatter.positiveFormat = "0.##E+0"
         Number.formatter.positiveFormat = "0.##E0"
         Number.formatter.exponentSymbol = "e"
         return Number.formatter.string(from: self as NSNumber) ?? description
     }
     var fixStyle:String {
         return String(format: "%4.2f", self)
+//        Number.formatter.numberStyle = .decimal
+//        Number.formatter.decimalSeparator = "."
+//        Number.formatter.maximumFractionDigits = 2
+//        Number.formatter.roundingMode = .halfUp
+//        return Number.formatter.string(from: self as NSNumber) ?? description
     }
     var styled:String {
         if self >= 1000 || self <= 0.01 {

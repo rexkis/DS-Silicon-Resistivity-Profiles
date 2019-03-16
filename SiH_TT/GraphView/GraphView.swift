@@ -127,7 +127,6 @@ class GraphView: NSView {
                                   y: graphRect.origin.y + origin.y,
                                   width: tickedXLength*0.99,
                                   height: tickedYLength)
-            
         }
     }
     
@@ -162,7 +161,6 @@ class GraphView: NSView {
     
     override func draw(_ dirtyRect: NSRect) {
         super.draw(dirtyRect)
-        
         context = NSGraphicsContext.current?.cgContext
         
         yAxisLength = bounds.height - origin.y - GConstants.chartInsets.top
@@ -194,7 +192,19 @@ class GraphView: NSView {
         let normG = currentXPoint/tickedXLength
         gValue = Double(normG.roundTo(0.01))
         needsDisplay = true
-        //        needsToRedraw = true
+    }
+    
+    fileprivate func drawAxes() {
+        // Draw axes with ticks and labels using Axes.swift class
+        let xAxis = XAxis(chartBounds: bounds, gridEnabled: xGridEnabled, data: xData)
+        xAxis.getAxis()
+        let yAxis = YAxis(chartBounds: bounds, gridEnabled: yGridEnabled, data: yData!)
+        yAxis.getAxis()
+    }
+    
+    fileprivate func drawCurves() {
+        curves = Curves(data: yData!, chartTypeName: chartTypeName, currentDopants: currentDopants, xAxisLength: xAxisLength, yAxisLength: yAxisLength)
+        curves!.drawCurves()
     }
     
     func drawChart() {
@@ -202,14 +212,9 @@ class GraphView: NSView {
             v.isHidden = false
         }
 
-        // Draw axes with ticks and labels using Axes.swift class
-        let xAxis = XAxis(chartBounds: bounds, gridEnabled: xGridEnabled, data: xData)
-        let yAxis = YAxis(chartBounds: bounds, gridEnabled: yGridEnabled, data: yData ?? [])
-        xAxis.getAxis()
-        yAxis.getAxis()
+        drawAxes()
 
-        curves = Curves(data: yData!, chartTypeName: chartTypeName, currentDopants: currentDopants, xAxisLength: xAxisLength, yAxisLength: yAxisLength)
-        curves!.drawCurves()
+        drawCurves()
         
         if fillPNAreas == true {
             drawPNAreas()

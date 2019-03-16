@@ -46,7 +46,7 @@
                     </textFieldCell>
                 </textField>
                 <stackView distribution="fillEqually" orientation="horizontal" alignment="top" spacing="10" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Nh1-bt-yHY">
-                    <rect key="frame" x="48" y="221" width="305" height="17"/>
+                    <rect key="frame" x="48" y="226" width="305" height="17"/>
                     <subviews>
                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="jvQ-Eb-JLT">
                             <rect key="frame" x="-2" y="0.0" width="99" height="17"/>
@@ -88,7 +88,7 @@
                     </customSpacing>
                 </stackView>
                 <stackView distribution="fillEqually" orientation="horizontal" alignment="top" spacing="10" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="4Hu-hq-IDl">
-                    <rect key="frame" x="48" y="202" width="305" height="17"/>
+                    <rect key="frame" x="48" y="207" width="305" height="17"/>
                     <subviews>
                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Lcw-jt-TdD">
                             <rect key="frame" x="-2" y="0.0" width="99" height="17"/>
@@ -131,7 +131,7 @@
                 </stackView>
             </subviews>
             <constraints>
-                <constraint firstItem="Nh1-bt-yHY" firstAttribute="top" secondItem="IjG-cG-bk1" secondAttribute="bottom" constant="10" id="2hm-4u-ESu"/>
+                <constraint firstItem="Nh1-bt-yHY" firstAttribute="top" secondItem="IjG-cG-bk1" secondAttribute="bottom" constant="5" id="2hm-4u-ESu"/>
                 <constraint firstItem="IjG-cG-bk1" firstAttribute="top" secondItem="p2h-wK-zac" secondAttribute="bottom" constant="5" id="8hS-aa-rj1"/>
                 <constraint firstItem="4Hu-hq-IDl" firstAttribute="top" secondItem="Nh1-bt-yHY" secondAttribute="bottom" constant="2" id="C3n-Cc-6Ce"/>
                 <constraint firstAttribute="trailing" secondItem="IjG-cG-bk1" secondAttribute="trailing" constant="20" id="EZt-Ve-epr"/>

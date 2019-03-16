@@ -46,19 +46,30 @@ class ResultView: NSView {
     var calcType:CalcType = .customR {
         didSet {
             clearFields()
+            manageTitlesAndControls()
         }
     }
     var currentDopants:[String] = [] {
         didSet {
             clearFields()
+            let hider = currentDopants.count == 2 ? true : false
+            _ = [resultLabel2,res2].map{$0?.isHidden = hider}
         }
     }
-    
+
     override func draw(_ dirtyRect: NSRect) {
         super.draw(dirtyRect)
-        
     }
-
+    
+    func manageTitlesAndControls() {
+        let resultLabels = Titles(dopants: currentDopants, calcType: calcType).setResultLabels()
+        for i in 0..<currentDopants.count {
+            resultLabelsArray[i].stringValue = resultLabels[i]
+        }
+        let resultTitle = Titles(dopants: currentDopants, calcType: calcType).setResultTitle()
+        resultLabel.attributedStringValue = resultTitle
+    }
+    
     func clearFields() {
         for element in resArray {
             element.stringValue = ""

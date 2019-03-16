@@ -41,10 +41,10 @@ class ViewController: NSViewController {
     @IBOutlet weak var tableView: NSTableView!
     // Prepare res data for NSTableView
     func makeResData() -> [ResData] {
-        var md: [ResData] = [ResData(sf: Constants.gString[0], res:String(format: "%4.2f",ingotData!.resDist[0]))]
+        var md: [ResData] = [ResData(sf: Constants.gString[0], res:ingotData!.resDist[0].styled)]
         for i in 1 ..< Constants.g.count {
             md += [ResData(sf: Constants.gString[i],
-                           res: String(format: "%4.2f",ingotData!.resDist[i]))]
+                           res: ingotData!.resDist[i].styled)]
         }
         return md
     }
@@ -74,19 +74,19 @@ class ViewController: NSViewController {
     var currentDopants = [String]() {
         didSet {
             dopantsCount = currentDopants.count
-            // Hiding controls in resultView. InputView does it "himself"
-            let hider = dopantsCount == 2 ? true : false
-            _ = [resultView.resultLabel2,resultView.res2].map{$0?.isHidden = hider}
-            setInputResultLabels()
+            if firstRun == true {
+                inputView.manageTitlesAndControls()
+                resultView.manageTitlesAndControls()
+            }
             resultView.currentDopants = currentDopants
         }
     }
     var calcType:CalcType = .customR {
         didSet {
-            let calcIdx = calcType == .customR ? 0 : 1
-            inputView.inputTitleLabel.attributedStringValue = stringMaker.inputTitleLabelsText[calcIdx]
-            resultView.resultLabel.attributedStringValue = stringMaker.resultTitleLabelsText[calcIdx]
-            setInputResultLabels()
+            if firstRun == true {
+                inputView.manageTitlesAndControls()
+                resultView.manageTitlesAndControls()
+            }
             resultView.calcType = calcType
         }
     }
@@ -94,16 +94,6 @@ class ViewController: NSViewController {
     // Variables used in further calculations
     var checkpoints: String {
         return dopantsCount == 2 ? "[0.05,0.85]" : "[0.05,0.50,0.85]"
-    }
-    var gExtraLabels:[String] {
-        return dopantsCount == 2 ? ["g = 0.05", "g = 0.85"] : ["g = 0.05", "g = 0.50", "g = 0.85"]
-    }
-    var dopantsDescriptionArray:[String] {
-        var arr = [String]()
-        for i in 0..<dopantsCount {
-            arr.append(Constants.dopantsDict[currentDopants[i]]!.description)
-        }
-        return arr
     }
     
     // Computed properties
@@ -182,6 +172,14 @@ class ViewController: NSViewController {
         
         resView.isHidden = false
         
+        if let settingsState = userDefaults.value(forKey: "settingsStateArray") as? [Int] {
+            graphView.xGridEnabled = settingsState[0] == 0 ? false : true
+            graphView.yGridEnabled = settingsState[1] == 0 ? false : true
+            graphView.fillPNAreas = settingsState[2] == 0 ? false : true
+        }
+        addObservers()
+        setInitialState()
+        
 ////        Debug: Remove all UserDefaults data. !!! All OK, but chart for Resistivity, not for Dopant Densities. Correct later!
 //        let domain = Bundle.main.bundleIdentifier!
 //        UserDefaults.standard.removePersistentDomain(forName: domain)
@@ -190,18 +188,7 @@ class ViewController: NSViewController {
 //        for (key, value) in userDefaults.dictionaryRepresentation() {
 //            Swift.print("\(key) = \(value) \n")
 //        }
-        
-        // Это можно будет перенести в GraphView
-        if let settingsState = userDefaults.value(forKey: "settingsStateArray") as? [Int] {
-            graphView.xGridEnabled = settingsState[0] == 0 ? false : true
-            graphView.yGridEnabled = settingsState[1] == 0 ? false : true
-            graphView.fillPNAreas = settingsState[2] == 0 ? false : true
-        }
-        
-        addObservers()
-        setInitialState()
 
-        
 //        let appDomain = Bundle.main.bundleIdentifier!
 //        let allKeys = userDefaults.dictionaryRepresentation().keys
 //        Swift.print(allKeys)
@@ -211,29 +198,6 @@ class ViewController: NSViewController {
 //        let folder = path[0]
 //        NSLog("Your NSUserDefaults are stored in this folder: \(folder)/Preferences")
 //        Swift.print("appDomain = \(appDomain)")
-    }
-    
-    func findDopantsIndex(dopants:[String]) -> Int? {
-        for (index,value) in Constants.dopantsArray.enumerated() {
-            if value == currentDopants {return index}
-        }
-        return nil
-    }
-    
-    func setInputResultLabels() {
-        switch calcType {
-        case .customDD:
-            for i in 0..<dopantsCount {
-                resultView.resultLabelsArray[i].stringValue = String(gExtraLabels[i])
-                inputView.inputLabelsArray[i].stringValue = dopantsDescriptionArray[i]
-                
-            }
-        case .customR:
-            for i in 0..<dopantsCount {
-                resultView.resultLabelsArray[i].stringValue = dopantsDescriptionArray[i]
-                inputView.inputLabelsArray[i].stringValue = String(gExtraLabels[i])
-            }
-        }
     }
 
     func makeBorders() {

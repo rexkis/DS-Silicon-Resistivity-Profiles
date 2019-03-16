@@ -51,11 +51,11 @@ extension ViewController {
         if firstRun != true {
             clearGraphView()
         }
-//        let calcTypeString = notification.userInfo?["calcTypeString"] as! String
-//        calcType = calcTypeString == "CustomR" ? .customR : .customDD
-        if let type = notification.userInfo?["calcTypeString"] as! String? {
-            calcType = type == "CustomR" ? .customR : .customDD
-        }
+        let calcTypeString = notification.userInfo?["calcTypeString"] as! String
+        calcType = calcTypeString == "CustomR" ? .customR : .customDD
+//        if let type = notification.userInfo?["calcTypeString"] as! String? {
+//            calcType = type == "CustomR" ? .customR : .customDD
+//        }
         
     }
     // Clear resultView calculated values when text fields in input view are editing + Clear GraphView & TableView
