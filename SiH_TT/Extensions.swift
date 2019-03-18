@@ -132,7 +132,7 @@ extension NSTextView {
 
 public extension CGFloat {
     // Round float to a specific step value
-    public func roundTo(_ to: CGFloat) -> CGFloat {
+    func roundTo(_ to: CGFloat) -> CGFloat {
         let remainder = self.truncatingRemainder(dividingBy: to)
         if remainder >= to / 2 {
             return self + to - remainder

@@ -152,6 +152,7 @@ class GraphView: NSView {
         yAxisLabel.frameCenterRotation = 90
         self.layer?.borderWidth = 1.0
         self.layer?.cornerRadius = 10.0
+        
     }
 
     func setTitles(index:Int) {
@@ -162,6 +163,21 @@ class GraphView: NSView {
     override func draw(_ dirtyRect: NSRect) {
         super.draw(dirtyRect)
         context = NSGraphicsContext.current?.cgContext
+        
+        if let settingsState = userDefaults.value(forKey: "settingsStateArray") as? [Int] {
+//            if settingsState[0] == 0 {
+//                xGridEnabled = false
+//            } else {xGridEnabled = true}
+//            if settingsState[1] == 0 {
+//                yGridEnabled = false
+//            } else {yGridEnabled = true}
+//            if settingsState[2] == 0 {
+//                fillPNAreas = false
+//            } else {fillPNAreas = true}
+            xGridEnabled = settingsState[0] == 0 ? false : true
+            yGridEnabled = settingsState[1] == 0 ? false : true
+            fillPNAreas = settingsState[2] == 0 ? false : true
+        }
         
         yAxisLength = bounds.height - origin.y - GConstants.chartInsets.top
         xAxisLength = bounds.width - origin.x - GConstants.chartInsets.right
@@ -213,7 +229,6 @@ class GraphView: NSView {
         }
 
         drawAxes()
-
         drawCurves()
         
         if fillPNAreas == true {

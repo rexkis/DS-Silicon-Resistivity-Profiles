@@ -12,9 +12,9 @@ import Cocoa
 extension ViewController {
 
     func setInitialState() {
-        setStartValues()
-        
         firstRun = true
+        
+        setStartValues()
         
         inputView.calcType = calcType
         inputView.currentDopants = currentDopants
@@ -71,12 +71,12 @@ extension ViewController {
             }
             
             // Fill in OUTPUT fields resArray with calculated and saved resistivities at check points
-            if let calculatedTargetResistivities = userDefaults.object(forKey: "checkPointsResistivities") as? [Double] {
-                for i in 0..<calculatedTargetResistivities.count {
-                    resultView.resArray[i].stringValue = calculatedTargetResistivities[i].styled
-                }
-            }
-            else {resultView.resArray.forEach{$0.stringValue = ""}}
+//            if let calculatedTargetResistivities = userDefaults.object(forKey: "checkPointsResistivities") as? [Double] {
+//                for i in 0..<calculatedTargetResistivities.count {
+//                    resultView.resArray[i].stringValue = calculatedTargetResistivities[i].styled
+//                }
+//            }
+//            else {resultView.resArray.forEach{$0.stringValue = ""}}
             
         case .customR:
             // Fill in INPUT fields tfArray with precalculated and saved input saved resistivities at check points
@@ -95,13 +95,13 @@ extension ViewController {
             }
             
             // Fill in OUTPUT fields resArray with precalculated and saved initial dopant densities
-            let y = userDefaults.object(forKey: "initConcs") as? [Double]
-            if let initDD = y, y!.isEmpty != true {
-                for i in 0..<initDD.count {
-                    resultView.resArray[i].stringValue = initDD[i].styled
-                }
-            }
-            else {resultView.resArray.forEach{$0.stringValue = ""}}
+//            let y = userDefaults.object(forKey: "initConcs") as? [Double]
+//            if let initDD = y, y!.isEmpty != true {
+//                for i in 0..<initDD.count {
+//                    resultView.resArray[i].stringValue = initDD[i].styled
+//                }
+//            }
+//            else {resultView.resArray.forEach{$0.stringValue = ""}}
         }
         
     }
@@ -170,8 +170,8 @@ extension ViewController {
         
         switch calcType {
         case .customR:
-            feedstock = Feedstock(currentDopants: currentDopants, inputFields: inputFields)
-            initConcs = feedstock.initConcs
+//            feedstock = Feedstock(currentDopants: currentDopants, inputFields: inputFields)
+            initConcs = Feedstock(currentDopants: currentDopants, inputFields: inputFields).getInitConcs()
             for conc in initConcs {
                 if conc.isInfinite {
                     throw AppErrors.noSolution
@@ -187,7 +187,7 @@ extension ViewController {
             ingotData = Ingot(currentDopants:currentDopants, initConcs: initConcs).getData()
             resistivityProfile = inputFields
             userDefaults.set(resistivityProfile, forKey: "resistivityProfile")
-            userDefaults.set(initConcs, forKey: "initConcs")
+//            userDefaults.set(initConcs, forKey: "initConcs")
             
             for i in 0..<initConcs.count {
                 resultView.resArray[i].stringValue = initConcs[i].styled

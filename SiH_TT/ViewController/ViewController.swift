@@ -106,7 +106,7 @@ class ViewController: NSViewController {
     let allowedDDRange = (1e14...1e19)  // For at/cm3 unit
     let allowedResRange = (0.01...100)
     
-    var feedstock = Feedstock(currentDopants: ["B","P"], inputFields: [1.0,1.0])
+//    var feedstock = Feedstock(currentDopants: ["B","P"], inputFields: [1.0,1.0])
     var ingotData:Distributions?
     
     
@@ -171,12 +171,6 @@ class ViewController: NSViewController {
         self.view.translatesAutoresizingMaskIntoConstraints = true
         
         resView.isHidden = false
-        
-        if let settingsState = userDefaults.value(forKey: "settingsStateArray") as? [Int] {
-            graphView.xGridEnabled = settingsState[0] == 0 ? false : true
-            graphView.yGridEnabled = settingsState[1] == 0 ? false : true
-            graphView.fillPNAreas = settingsState[2] == 0 ? false : true
-        }
         addObservers()
         setInitialState()
         

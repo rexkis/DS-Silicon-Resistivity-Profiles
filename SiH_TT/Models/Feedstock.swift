@@ -19,7 +19,7 @@ class Feedstock: NSObject {
     // Computed properties
     private var dopantsCount: Int = 0
     private var conductivity:String = ""
-    private var multipliers = [Double]()
+//    private var multipliers = [Double]()
     private var leftMatrix = [Double]()
     private var rightMatrix = [Double]()
     
@@ -33,7 +33,7 @@ class Feedstock: NSObject {
         dopantsCount = currentDopants.count
         conductivity = currentDopants.first == "B" || currentDopants.first == "Ga" ? "P-type" : "N-type"
         super.init()
-        multipliers = getMultipliers()
+//        multipliers = getMultipliers()
         leftMatrix = getLeftMatrix()
         rightMatrix = getRightMatrix()
 
@@ -74,7 +74,7 @@ class Feedstock: NSObject {
     }
     
     // https://stackoverflow.com/questions/41526674/solving-system-of-equations-in-swift
-    private func getInitConcs() -> [Double] {
+    func getInitConcs() -> [Double] {
         let N = UInt(dopantsCount)
         
         let mat = la_matrix_from_double_buffer(leftMatrix, N, N, N, la_hint_t(LA_NO_HINT), la_attribute_t(LA_DEFAULT_ATTRIBUTES))

@@ -13,6 +13,8 @@ class Titles {
     var dopants = [String]()
     var calcType: CalcType = .customR
     var concs: [Double] = []
+//    var resistivityProfile = [Double]()
+    
     
     init(dopants: [String]) {
         self.dopants = dopants
@@ -62,7 +64,7 @@ class Titles {
     var resultLabels = [String]()
     var resultTitle:NSMutableAttributedString = NSMutableAttributedString(string: "")
     
-    // Title & Labels for InputView
+    // Title & Labels for InputView ======================================
     func setInputLabels() -> [String] {
         switch calcType {
         case .customDD:
@@ -92,7 +94,7 @@ class Titles {
         return out
     }
     
-    // Title & Labels for ResultView
+    // Title & Labels for ResultView ======================================
     func setResultLabels() -> [String] {
         switch calcType {
         case .customDD:
@@ -122,7 +124,18 @@ class Titles {
         return out
     }
     
-    // Title & Labels for GraphView
+    // Title & Labels for ChartView ======================================
+//    func setCustomLabel() -> NSMutableAttributedString {
+//        var customLabel = NSMutableAttributedString(string: "")
+//        switch calcType {
+//        case .customR:
+//            customLabel = chartResString(calcType: calcType, checkpoints: checkpoints,resProfile: resistivityProfile)
+//        default:
+//            <#code#>
+//        }
+//        
+//        return NSMutableAttributedString(string: "")
+//    }
     func chartDDString(calcType:CalcType, dopants:[String], concs:[Double]) -> NSMutableAttributedString {
         var concStr:NSMutableAttributedString = NSMutableAttributedString(string: "")
         switch calcType {
